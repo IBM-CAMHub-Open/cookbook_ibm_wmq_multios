@@ -1,0 +1,1 @@
+# cookbook_ibm_wmq_multios
