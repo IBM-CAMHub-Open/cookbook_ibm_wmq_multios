@@ -1,0 +1,441 @@
+{
+    "wmq": {
+        "data_dir": {
+            "default": "/var/mqm",
+            "description": "The MQSeries data directory, reccomended /var/mqm",
+            "displayname": "MQSeriesVersion",
+            "parm_type": "component",
+            "precedence_level": "role",
+            "required": "recommended",
+            "secret": "false",
+            "selectable": "false",
+            "type": "string"
+        },
+        "fixpack": {
+            "default": "5",
+            "description": "The Fixpack of MQSeries to install.",
+            "displayname": "MQSeriesFixpack",
+            "max": "20",
+            "min": "1",
+            "parm_type": "node",
+            "precedence_level": "node",
+            "required": "recommended",
+            "secret": "false",
+            "selectable": "false",
+            "type": "string"
+        },
+        "gskversion": {
+            "default": "8.0.0-4",
+            "description": "The Version of GSK install with MQSeries",
+            "displayname": "MQSeriesGSKVersion",
+            "parm_type": "node",
+            "precedence_level": "node",
+            "required": "recommended",
+            "secret": "false",
+            "selectable": "false",
+            "type": "string"
+        },
+        "install_dir": {
+            "default": "/opt/mqm",
+            "description": "The directory to install MQSeries Binaries, reccomended /opt/mqm",
+            "displayname": "InstallDir",
+            "parm_type": "component",
+            "precedence_level": "role",
+            "required": "recommended",
+            "secret": "false",
+            "selectable": "false",
+            "type": "string"
+        },
+        "log_dir": {
+            "default": "/var/mqm/log",
+            "description": "MQseries Log Directory, reccomended -> node[wmq][data_dir]/log",
+            "displayname": "MQSeriesVersion",
+            "parm_type": "component",
+            "precedence_level": "role",
+            "required": "recommended",
+            "secret": "false",
+            "selectable": "false",
+            "type": "string"
+        },
+        "net_core_rmem_default": {
+            "default": "262144",
+            "description": "WebSphere MQ Server Kernel Configuration net_core_rmem_default",
+            "displayname": "net_core_rmem_default",
+            "parm_type": "node",
+            "precedence_level": "node",
+            "required": "recommended",
+            "secret": "false",
+            "selectable": "false",
+            "type": "string"
+        },
+        "net_core_rmem_max": {
+            "default": "4194304",
+            "description": "WebSphere MQ Server Kernel Configuration net_core_rmem_max",
+            "displayname": "net_core_rmem_max",
+            "parm_type": "node",
+            "precedence_level": "node",
+            "required": "recommended",
+            "secret": "false",
+            "selectable": "false",
+            "type": "string"
+        },
+        "net_core_wmem_default": {
+            "default": "262144",
+            "description": "WebSphere MQ Server Kernel Configuration net_core_wmem_default",
+            "displayname": "net_core_wmem_default",
+            "parm_type": "node",
+            "precedence_level": "node",
+            "required": "recommended",
+            "secret": "false",
+            "selectable": "false",
+            "type": "string"
+        },
+        "net_core_wmem_max": {
+            "default": "1048576",
+            "description": "WebSphere MQ Server Kernel Configuration net_core_wmem_max",
+            "displayname": "net_core_wmem_max",
+            "parm_type": "node",
+            "precedence_level": "node",
+            "required": "recommended",
+            "secret": "false",
+            "selectable": "false",
+            "type": "string"
+        },
+        "net_ipv4_tcp_fin_timeout": {
+            "default": "60",
+            "description": "WebSphere MQ Server Kernel Configuration net_ipv4_tcp_fin_timeout",
+            "displayname": "net_ipv4_tcp_fin_timeout",
+            "parm_type": "node",
+            "precedence_level": "node",
+            "required": "recommended",
+            "secret": "false",
+            "selectable": "false",
+            "type": "string"
+        },
+        "net_ipv4_tcp_keepalive_intvl": {
+            "default": "75",
+            "description": "WebSphere MQ Server Kernel Configuration net_ipv4_tcp_keepalive_intvl",
+            "displayname": "net_ipv4_tcp_keepalive_intvl",
+            "parm_type": "node",
+            "precedence_level": "node",
+            "required": "recommended",
+            "secret": "false",
+            "selectable": "false",
+            "type": "string"
+        },
+        "net_ipv4_tcp_keepalive_time": {
+            "default": "7200",
+            "description": "WebSphere MQ Server Kernel Configuration net_ipv4_tcp_keepalive_time",
+            "displayname": "net_ipv4_tcp_keepalive_time",
+            "parm_type": "node",
+            "precedence_level": "node",
+            "required": "recommended",
+            "selectable": "false",
+            "type": "string"
+        },
+        "net_ipv4_tcp_rmem": {
+            "default": "4096    87380   4194304",
+            "description": "WebSphere MQ Server Kernel Configuration net_ipv4_tcp_rmem",
+            "displayname": "net_ipv4_tcp_rmem",
+            "parm_type": "node",
+            "precedence_level": "node",
+            "required": "recommended",
+            "secret": "false",
+            "selectable": "false",
+            "type": "string"
+        },
+        "net_ipv4_tcp_sack": {
+            "default": "1",
+            "description": "WebSphere MQ Server Kernel Configuration net_ipv4_tcp_sack",
+            "displayname": "net_ipv4_tcp_sack",
+            "parm_type": "node",
+            "precedence_level": "node",
+            "required": "recommended",
+            "secret": "false",
+            "selectable": "false",
+            "type": "string"
+        },
+        "net_ipv4_tcp_timestamps": {
+            "default": "1",
+            "description": "WebSphere MQ Server Kernel Configuration net_ipv4_tcp_timestamps",
+            "displayname": "net_ipv4_tcp_timestamps",
+            "parm_type": "node",
+            "precedence_level": "node",
+            "required": "recommended",
+            "secret": "false",
+            "selectable": "false",
+            "type": "string"
+        },
+        "net_ipv4_tcp_window_scaling": {
+            "default": "1",
+            "description": "WebSphere MQ Server Kernel Configuration net_ipv4_tcp_window_scaling",
+            "displayname": "net_ipv4_tcp_window_scaling",
+            "parm_type": "node",
+            "precedence_level": "node",
+            "required": "recommended",
+            "secret": "false",
+            "selectable": "false",
+            "type": "string"
+        },
+        "net_ipv4_tcp_wmem": {
+            "default": "4096    87380   4194304",
+            "description": "WebSphere MQ Server Kernel Configuration net_ipv4_tcp_wmem",
+            "displayname": "net_ipv4_tcp_wmem",
+            "parm_type": "node",
+            "precedence_level": "node",
+            "required": "recommended",
+            "secret": "false",
+            "selectable": "false",
+            "type": "string"
+        },
+        "nofile_value": {
+            "default": "10240",
+            "description": "WebSphere MQ Server Ulimit Nofile Value",
+            "displayname": "nofile_value",
+            "parm_type": "node",
+            "precedence_level": "node",
+            "required": "recommended",
+            "secret": "false",
+            "selectable": "false",
+            "type": "string"
+        },
+        "os_users": {
+            "mqm": {
+                "comment": {
+                    "default": "MQSeries User",
+                    "description": "Comment associated with the MQSeries USer",
+                    "displayname": "MQUserComment",
+                    "parm_type": "component",
+                    "precedence_level": "role",
+                    "required": "recommended",
+                    "secret": "false",
+                    "selectable": "false",
+                    "type": "string"
+                },
+                "gid": {
+                    "default": "mqm",
+                    "description": "The Group of the MQSeries User",
+                    "displayname": "MQUSerGID",
+                    "parm_type": "component",
+                    "precedence_level": "role",
+                    "required": "recommended",
+                    "secret": "false",
+                    "selectable": "false",
+                    "type": "string"
+                },
+                "home": {
+                    "default": "/home/mqm",
+                    "description": "Home directory of the MQSeries User.",
+                    "displayname": "MQUserHomeDir",
+                    "parm_type": "component",
+                    "precedence_level": "role",
+                    "required": "recommended",
+                    "secret": "false",
+                    "selectable": "false",
+                    "type": "string"
+                },
+                "ldap_user": {
+                    "default": "false",
+                    "description": "A flag which indicates whether to create the MQ USer locally, or utilise an LDAP based user.",
+                    "displayname": "MQUSerLDAP",
+                    "parm_type": "component",
+                    "precedence_level": "role",
+                    "required": "recommended",
+                    "secret": "false",
+                    "selectable": "false",
+                    "type": "boolean"
+                },
+                "name": {
+                    "default": "mqm",
+                    "description": "Name of the Unix OS User that owns and controls MQSeries",
+                    "displayname": "MQSeriesUser",
+                    "parm_type": "component",
+                    "precedence_level": "role",
+                    "required": "recommended",
+                    "secret": "false",
+                    "selectable": "false",
+                    "type": "string"
+                },
+                "shell": {
+                    "default": "/bin/bash",
+                    "description": "Location of the MQSeries User Shell",
+                    "displayname": "MQUserShell",
+                    "parm_type": "component",
+                    "precedence_level": "role",
+                    "required": "recommended",
+                    "secret": "false",
+                    "selectable": "false",
+                    "type": "string"
+                }
+            }
+        },
+        "perms": {
+            "default": "775",
+            "description": "Default permissions for MQSeries files on Unix",
+            "displayname": "perms",
+            "parm_type": "node",
+            "precedence_level": "node",
+            "required": "recommended",
+            "secret": "false",
+            "selectable": "false",
+            "type": "string"
+        },
+        "qmgr": {
+            "qmgr1": {
+                "description": {
+                    "default": "Queue Manager 1",
+                    "description": "Description of the Queue Manager",
+                    "displayname": "QMGRDesc",
+                    "parm_type": "node",
+                    "precedence_level": "node",
+                    "required": "recommended",
+                    "secret": "false",
+                    "selectable": "false",
+                    "type": "string"
+                },
+                "dlq": {
+                    "default": "SYSTEM.DEAD.LETTER.QUEUE",
+                    "description": "Queue Manager Dead Letter Queue",
+                    "displayname": "QMGRDeadLetterQueue",
+                    "parm_type": "pattern",
+                    "precedence_level": "role",
+                    "required": "recommended",
+                    "secret": "false",
+                    "selectable": "false",
+                    "type": "string"
+                },
+                "listener_port": {
+                    "default": "1414",
+                    "description": "Port the Queue Manager listens on.",
+                    "displayname": "QMGRPort",
+                    "max": "50000",
+                    "min": "1025",
+                    "parm_type": "node",
+                    "precedence_level": "node",
+                    "required": "recommended",
+                    "secret": "false",
+                    "selectable": "false",
+                    "type": "string"
+                },
+                "loggingtype": {
+                    "choice": [
+                        "ll",
+                        "lc"
+                    ],
+                    "default": "lc",
+                    "description": "Type of logging to use ll(Linear), lc(Circular)",
+                    "displayname": "QMGRLogging",
+                    "parm_type": "pattern",
+                    "precedence_level": "role",
+                    "required": "recommended",
+                    "secret": "false",
+                    "selectable": "true",
+                    "type": "string"
+                },
+                "logsize": {
+                    "default": "16384",
+                    "description": "Size of the MQSeries Logs",
+                    "displayname": "QMGRLogSize",
+                    "parm_type": "node",
+                    "precedence_level": "node",
+                    "required": "recommended",
+                    "secret": "false",
+                    "selectable": "false",
+                    "type": "string"
+                },
+                "name": {
+                    "default": "qmgr1",
+                    "description": "Name of the Queue Manager to Create",
+                    "displayname": "QMGRName",
+                    "parm_type": "node",
+                    "precedence_level": "node",
+                    "required": "recommended",
+                    "secret": "false",
+                    "selectable": "false",
+                    "type": "string"
+                },
+                "primarylogs": {
+                    "default": "10",
+                    "description": "Number of Primary Logs to create.",
+                    "displayname": "QMGRPrimaryLogs",
+                    "parm_type": "pattern",
+                    "precedence_level": "role",
+                    "required": "recommended",
+                    "secret": "false",
+                    "selectable": "false",
+                    "type": "string"
+                },
+                "secondarylogs": {
+                    "default": "20",
+                    "description": "Number of Secondary Logs",
+                    "displayname": "QMGRSecondaryLogs",
+                    "parm_type": "pattern",
+                    "precedence_level": "role",
+                    "required": "recommended",
+                    "secret": "false",
+                    "selectable": "false",
+                    "type": "string"
+                }
+            }
+        },
+        "qmgr_dir": {
+            "default": "/var/mqm/qmgrs",
+            "description": "The MQSeries Queue Manager Directory, reccomended node[wmq][data_dir]/qmgrs",
+            "displayname": "MQSeriesVersion",
+            "parm_type": "component",
+            "precedence_level": "role",
+            "required": "recommended",
+            "secret": "false",
+            "selectable": "false",
+            "type": "string"
+        },
+        "swap_file": {
+            "default": "/swapfile",
+            "description": "swap file name",
+            "displayname": "swap_file",
+            "parm_type": "node",
+            "precedence_level": "node",
+            "required": "recommended",
+            "secret": "false",
+            "selectable": "false",
+            "type": "string"
+        },
+        "swap_file_size": {
+            "default": "512",
+            "description": "Dwap size in mega bytes",
+            "displayname": "swap_file_size",
+            "parm_type": "node",
+            "precedence_level": "node",
+            "required": "recommended",
+            "secret": "false",
+            "selectable": "false",
+            "type": "string"
+        },
+        "version": {
+            "choice": [
+                "8.0",
+                "9.0"
+            ],
+            "default": "8.0",
+            "description": "The Version of MQSeries to install.",
+            "displayname": "MQSeriesVersion",
+            "parm_type": "node",
+            "precedence_level": "node",
+            "required": "recommended",
+            "secret": "false",
+            "selectable": "true",
+            "type": "string"
+        },
+        "vm_swappiness": {
+            "default": "0",
+            "description": "WebSphere MQ Server Kernel Configuration vm_swappiness",
+            "displayname": "vm_swappiness",
+            "parm_type": "node",
+            "precedence_level": "node",
+            "required": "recommended",
+            "secret": "false",
+            "selectable": "false",
+            "type": "string"
+        }
+    }
+}
