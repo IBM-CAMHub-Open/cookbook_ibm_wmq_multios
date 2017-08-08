@@ -39,6 +39,10 @@
         "displayname": "wmq_create_qmgrs",
         "name": "wmq_create_qmgrs",
         "objectname": "wmq_create_qmgrs",
+        "run_list": [
+            "recipe[wmq::config_qmgr_single]",
+            "recipe[wmq::start_qmgr]"
+        ],
         "type": "chef_role"
     },
     {
@@ -51,9 +55,10 @@
                 "sw_repo_user": "repouser"
             },
             "wmq": {
+                "advanced": "false",
                 "data_dir": "/var/mqm",
                 "fixpack": "5",
-                "gskversion": "8.0.0-4",
+                "global_mq_service": "true",
                 "install_dir": "/opt/mqm",
                 "log_dir": "/var/mqm/log",
                 "net_core_rmem_default": "10240",
@@ -79,6 +84,7 @@
                 },
                 "perms": "755",
                 "qmgr_dir": "/var/mqm/qmgrs",
+                "service_name": "mq",
                 "swap_file": "/swapfile",
                 "swap_file_size": "512",
                 "version": "8.0"
@@ -89,6 +95,15 @@
         "displayname": "wmq_v8_install",
         "name": "wmq_v8_install",
         "objectname": "wmq_v8_install",
+        "run_list": [
+            "recipe[wmq::prereq_check]",
+            "recipe[wmq::prereq]",
+            "recipe[wmq::install]",
+            "recipe[wmq::fixpack]",
+            "recipe[wmq::service]",
+            "recipe[wmq::gather_evidence]",
+            "recipe[wmq::cleanup]"
+        ],
         "type": "chef_role"
     },
     {
@@ -101,9 +116,10 @@
                 "sw_repo_user": "repouser"
             },
             "wmq": {
+                "advanced": "false",
                 "data_dir": "/var/mqm",
-                "fixpack": "0",
-                "gskversion": "9.0.0-0",
+                "fixpack": "1",
+                "global_mq_service": "true",
                 "install_dir": "/opt/mqm",
                 "log_dir": "/var/mqm/log",
                 "net_core_rmem_default": "10240",
@@ -129,6 +145,7 @@
                 },
                 "perms": "755",
                 "qmgr_dir": "/var/mqm/qmgrs",
+                "service_name": "mq",
                 "swap_file": "/swapfile",
                 "swap_file_size": "512",
                 "version": "9.0"
@@ -139,6 +156,15 @@
         "displayname": "wmq_v9_install",
         "name": "wmq_v9_install",
         "objectname": "wmq_v9_install",
+        "run_list": [
+            "recipe[wmq::prereq_check]",
+            "recipe[wmq::prereq]",
+            "recipe[wmq::install]",
+            "recipe[wmq::fixpack]",
+            "recipe[wmq::service]",
+            "recipe[wmq::gather_evidence]",
+            "recipe[wmq::cleanup]"
+        ],
         "type": "chef_role"
     }
 ]

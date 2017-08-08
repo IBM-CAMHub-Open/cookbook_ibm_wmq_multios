@@ -11,9 +11,9 @@
       "sw_repo_auth": "true"
     },
     "wmq": {
+      "advanced": "false",
       "version": "8.0",
       "fixpack": "5",
-      "gskversion": "8.0.0-4",
       "install_dir": "/opt/mqm",
       "data_dir": "/var/mqm",
       "qmgr_dir": "/var/mqm/qmgrs",
@@ -44,7 +44,9 @@
       "net_ipv4_tcp_fin_timeout": "60",
       "net_core_rmem_default": "262144",
       "net_core_rmem_default": "0",
-      "net_core_rmem_default": "10240"
+      "net_core_rmem_default": "10240",
+      "service_name": "mq",
+      "global_mq_service": "true"
     }
   },
   "chef_type": "role",
@@ -53,6 +55,7 @@
     "recipe[wmq::prereq]",
     "recipe[wmq::install]",
     "recipe[wmq::fixpack]",
+    "recipe[wmq::service]",
     "recipe[wmq::gather_evidence]",
     "recipe[wmq::cleanup]"
   ]

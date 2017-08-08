@@ -11,9 +11,9 @@
 # CREATE QUEUE MANAGER
 ###############################################################################
 
-if platform?('redhat')
+if platform?('redhat') || platform?('ubuntu')
   node['wmq']['qmgr'].each do |qmgr, qmgrobject|
-    next if qmgr.match('INDEX') && node['wqm']['skip_indexes']
+    next if qmgr.match('$INDEX') && node['wqm']['skip_indexes']
     execute_create_qmgr(qmgrobject)
   end
 end

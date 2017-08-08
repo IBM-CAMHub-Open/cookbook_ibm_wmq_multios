@@ -7,13 +7,24 @@
 # <> Installation recipe (install.rb)
 # <> This recipe performs the product installation.
 
+# Determine Installation Packages
+# ------------------------------------------------------------------------------
+
+Chef::Log.info("Setting Install Packages")
+case node['wmq']['advanced']
+when 'false'
+  packages = node['wmq']['packages']
+when 'true'
+  packages = "#{node['wmq']['packages']} #{node['wmq']['advancedpackages']}"
+end
+
 # Extract packages from archives
 # ------------------------------------------------------------------------------
-if platform?('redhat')
+if platform?('redhat') || platform?('ubuntu')
   node['wmq']['archive_names'].each do |type, package|
     next if type != 'base'
     filename = package['filename']
-    pkg_url = node['wmq']['sw_repo_path'] + '/' + 'base' + '/' + filename
+    pkg_url = node['ibm']['sw_repo'] + node['wmq']['sw_repo_path'] + '/' + 'base' + '/' + filename
 
     Chef::Log.info("Unpacking #{filename} from #{pkg_url}")
     ibm_cloud_utils_unpack "Fetch and unpack :#{filename}" do
@@ -45,6 +56,7 @@ if platform?('redhat')
   when '9.0'
     install_root = node['wmq']['expand_area'] + '/base/MQServer'
   end
+
   Chef::Log.info("Running mqlicense.sh")
   execute 'license' do
     command './mqlicense.sh -accept'
@@ -54,14 +66,24 @@ if platform?('redhat')
 
   Chef::Log.info("Installing Packages #{node['wmq']['packages']}")
   execute 'pkgs_installation_base_packages' do
-    command "rpm --prefix #{node['wmq']['install_dir']} -ivh #{node['wmq']['packages']}"
+    case node['platform_family']
+    when 'rhel'
+      command "rpm --prefix #{node['wmq']['install_dir']} -ivh #{packages}"
+    when 'debian'
+      command "rpm --prefix #{node['wmq']['install_dir']} -ivh #{packages} --force-debian"
+    end
     cwd install_root
     not_if { wmq_installed? }
   end
 
   Chef::Log.info("Installing GSK Packages #{node['wmq']['gskpackages']}")
   execute 'pkgs_installation_base_gsk' do
-    command "rpm --prefix #{node['wmq']['install_dir']} -ivh #{node['wmq']['gskpackages']}"
+    case node['platform_family']
+    when 'rhel'
+      command "rpm --prefix #{node['wmq']['install_dir']} -ivh #{node['wmq']['gskpackages']}"
+    when 'debian'
+      command "rpm --prefix #{node['wmq']['install_dir']} -ivh #{node['wmq']['gskpackages']} --force-debian"
+    end
     cwd install_root
     not_if { wmq_installed? }
   end

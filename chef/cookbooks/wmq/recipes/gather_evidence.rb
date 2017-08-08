@@ -24,7 +24,7 @@ end
 # ------------------------------------------------------------------------------
 Chef::Log.info("Storing dspmqver as evidence")
 case node['platform_family']
-when 'rhel'
+when 'rhel', 'debian'
   execute 'run_dspmqver' do
     command "#{node['wmq']['install_dir']}/bin/dspmqver >> #{evidence_log}"
     action :run
@@ -37,7 +37,7 @@ end
 
 Chef::Log.info("Storing dspmq -o all as evidence")
 case node['platform_family']
-when 'rhel'
+when 'rhel', 'debian'
   execute 'run_dspmqver_-o_all' do
     command "#{node['wmq']['install_dir']}/bin/dspmq -o all >> #{evidence_log}"
     action :run

@@ -11,11 +11,23 @@
 # Determine if Fixpack is to be run
 # ------------------------------------------------------------------------------
 
+
 upgrade_fixpack = if wmq_installed?
                     true
                   else
                     false
                   end
+
+# Determine Installation Packages
+# ------------------------------------------------------------------------------
+
+Chef::Log.info("Setting Install Packages")
+case node['wmq']['advanced']
+when 'false'
+  packages = node['wmq']['fixpackpackages']
+when 'true'
+  packages = "#{node['wmq']['fixpackpackages']} #{node['wmq']['advancedfixpack']}"
+end
 
 # Extract packages from archives
 # ------------------------------------------------------------------------------
@@ -25,12 +37,12 @@ if node['wmq']['fixpack'] == "0"
   Chef::Log.info("No Fixpack being applied.")
 else
 
-  if platform?('redhat')
+  if platform?('redhat') || platform?('ubuntu')
     Chef::Log.info("########## #{node['wmq']['fixpack']}")
     node['wmq']['fixpack_names'].each do |type, package|
       next if type != 'fixpack'
       filename = package['filename']
-      pkg_url = node['wmq']['sw_repo_path'] + '/' + 'maint' + '/' + filename
+      pkg_url = node['ibm']['sw_repo'] + node['wmq']['sw_repo_path'] + '/' + 'maint' + '/' + filename
 
       Chef::Log.info("Unpacking #{filename} from #{pkg_url}")
       ibm_cloud_utils_unpack "Fetch and unpack :#{filename}" do
@@ -60,16 +72,27 @@ else
 
     # Upgrade WebSphere Message Queue (RPM Packages Installation)
     # -------------------------------------------------------------------------------
+
     Chef::Log.info("Installing Fixpack Packages #{node['wmq']['fixpackpackages']}")
     execute 'pkgs_installation_fixpack_packages' do
-      command "rpm --prefix #{node['wmq']['install_dir']} -ivh #{node['wmq']['fixpackpackages']}"
+      case node['platform_family']
+      when 'rhel'
+        command "rpm --prefix #{node['wmq']['install_dir']} -ivh #{packages}"
+      when 'debian'
+        command "rpm --prefix #{node['wmq']['install_dir']} -ivh #{packages} --force-debian"
+      end
       cwd node['wmq']['expand_area'] + '/fixpack'
       only_if { wmq_upgrade_fixpack? }
     end
 
     Chef::Log.info("Installing GSK Fixpack Packages #{node['wmq']['fixpackgsk']}")
     execute 'pkgs_installation_fixpack_gsk' do
-      command "rpm --prefix #{node['wmq']['install_dir']} -ivh #{node['wmq']['fixpackgsk']}"
+      case node['platform_family']
+      when 'rhel'
+        command "rpm --prefix #{node['wmq']['install_dir']} -ivh #{node['wmq']['fixpackgsk']}"
+      when 'debian'
+        command "rpm --prefix #{node['wmq']['install_dir']} -ivh #{node['wmq']['fixpackgsk']} --force-debian"
+      end
       cwd node['wmq']['expand_area'] + '/fixpack'
       only_if { wmq_upgrade_fixpack? }
     end

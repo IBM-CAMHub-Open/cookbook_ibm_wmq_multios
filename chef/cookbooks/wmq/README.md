@@ -172,6 +172,11 @@ Attributes
     <td>Default</td>
   </tr>
   <tr>
+    <td><code>node['wmq']['advanced']</code></td>
+    <td>Whether to install MQSeries Advanced Componenets - File Transfer, Telemetry, AMS</td>
+    <td><code>false</code></td>
+  </tr>
+  <tr>
     <td><code>node['wmq']['data_dir']</code></td>
     <td>The MQSeries data directory, reccomended /var/mqm</td>
     <td><code>/var/mqm</code></td>
@@ -182,9 +187,9 @@ Attributes
     <td><code>5</code></td>
   </tr>
   <tr>
-    <td><code>node['wmq']['gskversion']</code></td>
-    <td>The Version of GSK install with MQSeries</td>
-    <td><code>8.0.0-4</code></td>
+    <td><code>node['wmq']['global_mq_service']</code></td>
+    <td>WebSphere MQ Global Service control</td>
+    <td><code>true</code></td>
   </tr>
   <tr>
     <td><code>node['wmq']['install_dir']</code></td>
@@ -297,42 +302,42 @@ Attributes
     <td><code>775</code></td>
   </tr>
   <tr>
-    <td><code>node['wmq']['qmgr']['qmgr1']['description']</code></td>
+    <td><code>node['wmq']['qmgr']['qmgr($INDEX)']['description']</code></td>
     <td>Description of the Queue Manager</td>
     <td><code>Queue Manager 1</code></td>
   </tr>
   <tr>
-    <td><code>node['wmq']['qmgr']['qmgr1']['dlq']</code></td>
+    <td><code>node['wmq']['qmgr']['qmgr($INDEX)']['dlq']</code></td>
     <td>Queue Manager Dead Letter Queue</td>
     <td><code>SYSTEM.DEAD.LETTER.QUEUE</code></td>
   </tr>
   <tr>
-    <td><code>node['wmq']['qmgr']['qmgr1']['listener_port']</code></td>
+    <td><code>node['wmq']['qmgr']['qmgr($INDEX)']['listener_port']</code></td>
     <td>Port the Queue Manager listens on.</td>
     <td><code>1414</code></td>
   </tr>
   <tr>
-    <td><code>node['wmq']['qmgr']['qmgr1']['loggingtype']</code></td>
+    <td><code>node['wmq']['qmgr']['qmgr($INDEX)']['loggingtype']</code></td>
     <td>Type of logging to use ll(Linear), lc(Circular)</td>
     <td><code>lc</code></td>
   </tr>
   <tr>
-    <td><code>node['wmq']['qmgr']['qmgr1']['logsize']</code></td>
+    <td><code>node['wmq']['qmgr']['qmgr($INDEX)']['logsize']</code></td>
     <td>Size of the MQSeries Logs</td>
     <td><code>16384</code></td>
   </tr>
   <tr>
-    <td><code>node['wmq']['qmgr']['qmgr1']['name']</code></td>
+    <td><code>node['wmq']['qmgr']['qmgr($INDEX)']['name']</code></td>
     <td>Name of the Queue Manager to Create</td>
     <td><code>qmgr1</code></td>
   </tr>
   <tr>
-    <td><code>node['wmq']['qmgr']['qmgr1']['primarylogs']</code></td>
+    <td><code>node['wmq']['qmgr']['qmgr($INDEX)']['primarylogs']</code></td>
     <td>Number of Primary Logs to create.</td>
     <td><code>10</code></td>
   </tr>
   <tr>
-    <td><code>node['wmq']['qmgr']['qmgr1']['secondarylogs']</code></td>
+    <td><code>node['wmq']['qmgr']['qmgr($INDEX)']['secondarylogs']</code></td>
     <td>Number of Secondary Logs</td>
     <td><code>20</code></td>
   </tr>
@@ -340,6 +345,11 @@ Attributes
     <td><code>node['wmq']['qmgr_dir']</code></td>
     <td>The MQSeries Queue Manager Directory, reccomended node[wmq][data_dir]/qmgrs</td>
     <td><code>/var/mqm/qmgrs</code></td>
+  </tr>
+  <tr>
+    <td><code>node['wmq']['service_name']</code></td>
+    <td>WebSphere MQ Service name</td>
+    <td><code>mq</code></td>
   </tr>
   <tr>
     <td><code>node['wmq']['swap_file']</code></td>
@@ -353,7 +363,7 @@ Attributes
   </tr>
   <tr>
     <td><code>node['wmq']['version']</code></td>
-    <td>The Version of MQSeries to install.</td>
+    <td>The Version of MQSeries to install, eg, 8.0</td>
     <td><code>8.0</code></td>
   </tr>
   <tr>
@@ -418,6 +428,16 @@ This recipe configures the operating prerequisites for the product.
 
 Prerequisite Check Recipe (preq_check.rb)
 This recipe wil check the target platform to ensure installation is possible
+
+
+### wmq::service.rb
+
+
+Create the MQ service and enables it on RHEL 7
+Create the MQ service file
+Create the MQ service script
+Enable and start the httpd service
+Enable the MQ service
 
 
 ### wmq::start_qmgr.rb

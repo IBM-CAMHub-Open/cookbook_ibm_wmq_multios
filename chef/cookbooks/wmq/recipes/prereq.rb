@@ -12,10 +12,10 @@ ibm_cloud_utils_hostsfile_update 'update_the_etc_hosts_file' do
 end
 # This will only work if the VM has access to rubygems.org
 # Otherwise the gem should be installed during bootstrap
-chef_gem 'chef-vault' do
-  action :install
-  compile_time true
-end
+# chef_gem 'chef-vault' do
+#   action :install
+#   compile_time true
+# end
 
 ####
 expand_area = node['wmq']['expand_area']
@@ -36,7 +36,7 @@ swap_file_name = node['wmq']['swap_file']
 
 Chef::Log.info("Creating users and groups")
 case node['platform_family']
-when 'rhel', 'centos', 'fedora'
+when 'rhel', 'debian'
   node['wmq']['os_users'].each_pair do |_k, u|
     next if u['ldap_user'] == 'true' || u['name'].nil?
     group u['gid'] do
@@ -66,41 +66,70 @@ end
 
 Chef::Log.info("Setting kernel parameters")
 case node['platform_family']
-when 'rhel', 'centos', 'fedora'
-
-  bash 'sysctl_reload' do
-    code 'source /etc/init.d/functions && apply_sysctl'
-    action :nothing
+when 'rhel', 'debian'
+  ibm_cloud_utils_ibm_cloud_sysctl "apply" do
+    key "net.core.rmem_default"
+    value node['wmq']['net_core_rmem_default']
   end
-end
 
-case node['platform_family']
-when 'rhel', 'centos', 'fedora'
-  directory '/etc/sysctl.d' do
-    mode '0755'
+  ibm_cloud_utils_ibm_cloud_sysctl "apply" do
+    key "net.core.rmem_max"
+    value node['wmq']['net_core_rmem_max']
   end
-end
 
-case node['platform_family']
-when 'rhel', 'centos', 'fedora'
-  template '/etc/sysctl.d/kernel_params.conf' do
-    mode 0644
-    variables(
-      'net_core_rmem_default' => node['wmq']['net_core_rmem_default'],
-      'net_core_rmem_max' => node['wmq']['net_core_rmem_max'],
-      'net_core_wmem_default' => node['wmq']['net_core_wmem_default'],
-      'net_core_wmem_max' => node['wmq']['net_core_wmem_max'],
-      'net_ipv4_tcp_rmem' => node['wmq']['net_ipv4_tcp_rmem'],
-      'net_ipv4_tcp_wmem' => node['wmq']['net_ipv4_tcp_wmem'],
-      'net_ipv4_tcp_sack' => node['wmq']['net_ipv4_tcp_sack'],
-      'net_ipv4_tcp_timestamps' => node['wmq']['net_ipv4_tcp_timestamps'],
-      'net_ipv4_tcp_window_scaling' => node['wmq']['net_ipv4_tcp_window_scaling'],
-      'net_ipv4_tcp_keepalive_time' => node['wmq']['net_ipv4_tcp_keepalive_time'],
-      'net_ipv4_tcp_keepalive_intvl' => node['wmq']['net_ipv4_tcp_keepalive_intvl'],
-      'net_ipv4_tcp_fin_timeout' => node['wmq']['net_ipv4_tcp_fin_timeout'],
-      'vm_swappiness' => node['wmq']['vm_swappiness']
-    )
-    notifies :run, 'bash[sysctl_reload]', :immediately
+  ibm_cloud_utils_ibm_cloud_sysctl "apply" do
+    key "net.core.wmem_default"
+    value node['wmq']['net_core_wmem_default']
+  end
+
+  ibm_cloud_utils_ibm_cloud_sysctl "apply" do
+    key "net.core.wmem_max"
+    value node['wmq']['net_core_wmem_max']
+  end
+
+  ibm_cloud_utils_ibm_cloud_sysctl "apply" do
+    key "net.ipv4.tcp_rmem"
+    value node['wmq']['net_ipv4_tcp_rmem']
+  end
+
+  ibm_cloud_utils_ibm_cloud_sysctl "apply" do
+    key "net.ipv4.tcp_wmem"
+    value node['wmq']['net_ipv4_tcp_wmem']
+  end
+
+  ibm_cloud_utils_ibm_cloud_sysctl "apply" do
+    key "net.ipv4.tcp_sack"
+    value node['wmq']['net_ipv4_tcp_sack']
+  end
+
+  ibm_cloud_utils_ibm_cloud_sysctl "apply" do
+    key "net.ipv4.tcp_timestamps"
+    value node['wmq']['net_ipv4_tcp_timestamps']
+  end
+
+  ibm_cloud_utils_ibm_cloud_sysctl "apply" do
+    key "net.ipv4.tcp_window_scaling"
+    value node['wmq']['net_ipv4_tcp_window_scaling']
+  end
+
+  ibm_cloud_utils_ibm_cloud_sysctl "apply" do
+    key "net.ipv4.tcp_keepalive_time"
+    value node['wmq']['net_ipv4_tcp_keepalive_time']
+  end
+
+  ibm_cloud_utils_ibm_cloud_sysctl "apply" do
+    key "net.ipv4.tcp_keepalive_intvl"
+    value node['wmq']['net_ipv4_tcp_keepalive_intvl']
+  end
+
+  ibm_cloud_utils_ibm_cloud_sysctl "apply" do
+    key "net.ipv4.tcp_fin_timeout"
+    value node['wmq']['net_ipv4_tcp_fin_timeout']
+  end
+
+  ibm_cloud_utils_ibm_cloud_sysctl "apply" do
+    key "vm.swappiness"
+    value node['wmq']['vm_swappiness']
   end
 end
 
@@ -108,7 +137,7 @@ end
 # ------------------------------------------------------------------------------
 Chef::Log.info("Configuring Shell and ulimit for mqm user")
 case node['platform_family']
-when 'rhel', 'centos', 'fedora'
+when 'rhel', 'debian'
   execute 'set_ulimit' do
     command "echo 'ulimit -n 10240' >> /root/.bashrc; . /root/.bashrc"
     not_if { IO.popen('cat /root/.bashrc').readlines.join.include? 'ulimit -n 10240' }
@@ -116,7 +145,7 @@ when 'rhel', 'centos', 'fedora'
 end
 
 case node['platform_family']
-when 'rhel', 'centos', 'fedora'
+when 'rhel', 'debian'
   template '/etc/security/limits.conf' do
     owner 'root'
     group 'root'
@@ -130,11 +159,17 @@ end
 
 # Linux Package installation
 # ------------------------------------------------------------------------------
+apt_update 'update' do
+  action :update
+  only_if { node['platform_family'] == 'debian' }
+end
+
+
 
 prereqs =  node['wmq']['prereqs']
 Chef::Log.info("Installing pre-requisite packages. #{prereqs}")
 case node['platform_family']
-when 'rhel', 'centos', 'fedora'
+when 'rhel', 'debian'
   prereqs.each do |p|
     package p do
       package_name p
@@ -148,7 +183,7 @@ end
 # ------------------------------------------------------------------------------
 Chef::Log.info("Configuring base directory #{install_dir}")
 case node['platform_family']
-when 'rhel', 'centos', 'fedora'
+when 'rhel', 'debian'
   directory install_dir do
     owner 'root'
     group 'root'
@@ -186,7 +221,7 @@ end
 # ------------------------------------------------------------------------------
 Chef::Log.info("Configuring mq log and data directory #{node['wmq']['data_dir']}, #{node['wmq']['log_dir']}")
 case node['platform_family']
-when 'rhel', 'centos', 'fedora'
+when 'rhel', 'debian'
   [node['wmq']['data_dir'], node['wmq']['log_dir']].each do |dirs|
     directory dirs do
       owner node['wmq']['os_users']['mqm']['name']
@@ -200,53 +235,9 @@ end
 
 # Create a regular swap file
 # ------------------------------------------------------------------------------
-Chef::Log.info("Creating swap file #{swap_file_name} of size #{swap_file_size}")
-case node['platform_family']
-when 'rhel', 'centos', 'fedora'
-  execute 'creating swapfile' do
-    command "/bin/dd if=/dev/zero of=#{swap_file_name} bs=1M count=#{swap_file_size}"
-    action :run
-    creates swap_file_name
-    not_if { File.exist? swap_file_name }
-  end
-end
-
-# Format the regular swap file, already created in previous step
-# ------------------------------------------------------------------------------
-Chef::Log.info("Format swap file #{swap_file_name}")
-case node['platform_family']
-when 'rhel', 'centos', 'fedora'
-  execute 'formatting swapfile' do
-    command "/sbin/mkswap -L local #{swap_file_name}"
-    action :run
-    only_if { File.exist? swap_file_name }
-    not_if  { IO.popen("swapon -s | grep #{swap_file_name}").readlines.join.include? swap_file_name }
-  end
-end
-
-# Mount the swap file
-# ------------------------------------------------------------------------------
-Chef::Log.info("Mount swap file #{swap_file_name}")
-case node['platform_family']
-when 'rhel', 'centos', 'fedora'
-  mount 'none' do
-    device swap_file_name
-    fstype 'swap'
-    options ['sw']
-    dump 0
-    pass 0
-    action :enable
-    only_if { File.exist? swap_file_name }
-  end
-end
-
-Chef::Log.info("Activate swap file #{swap_file_name}")
-case node['platform_family']
-when 'rhel', 'centos', 'fedora'
-  execute 'swap activation' do
-    command '/sbin/swapon -a'
-    action :run
-    only_if { File.exist? swap_file_name }
-    not_if  { IO.popen("swapon -s | grep #{swap_file_name}").readlines.join.include? swap_file_name }
-  end
+ibm_cloud_utils_ibm_cloud_swap swap_file_name do
+  action :enable
+  swapfile swap_file_name
+  size swap_file_size
+  label swap_file_name
 end

@@ -11,7 +11,7 @@
 # START QUEUE MANAGER
 ###############################################################################
 
-if platform?('redhat')
+if platform?('redhat') || platform?('ubuntu')
   node['wmq']['qmgr'].each do |_qmgr, qmgrobject|
     execute_start_qmgr(qmgrobject)
   end

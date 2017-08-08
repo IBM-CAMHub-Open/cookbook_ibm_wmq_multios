@@ -12,3 +12,4 @@ directory 'deleting_expand_area' do
   recursive true
   action :delete
 end
+

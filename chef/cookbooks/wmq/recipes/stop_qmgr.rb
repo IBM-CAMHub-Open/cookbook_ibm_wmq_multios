@@ -11,7 +11,7 @@
 # STOP QUEUE MANAGER
 ###############################################################################
 
-if platform?('redhat')
+if platform?('redhat') || platform?('ubuntu')
   node['wmq']['qmgr'].each do |_qmgr, qmgrobject|
     execute_stop_qmgr(qmgrobject)
   end

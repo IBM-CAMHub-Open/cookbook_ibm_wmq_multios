@@ -14,7 +14,7 @@
 # <> Version of MQSeries to install
 # <md> attribute 'wmq/version',
 # <md>          :displayname => 'MQSeriesVersion',
-# <md>          :description => 'The Version of MQSeries to install.',
+# <md>          :description => 'The Version of MQSeries to install, eg, 8.0',
 # <md>          :choice => [ '8.0',
 # <md>                       '9.0' ],
 # <md>          :type => 'string',
@@ -26,6 +26,23 @@
 # <md>          :parm_type => 'node'
 
 default['wmq']['version'] = "8.0"
+
+
+# <> Advanced Installation
+# <md> attribute 'wmq/advanced',
+# <md>          :displayname => 'MQSeriesAdvanced',
+# <md>          :description => 'Whether to install MQSeries Advanced Componenets - File Transfer, Telemetry, AMS',
+# <md>          :choice => [ 'true',
+# <md>                       'false' ],
+# <md>          :type => 'string',
+# <md>          :required => 'recommended',
+# <md>          :default => 'false',
+# <md>          :selectable => 'true',
+# <md>          :precedence_level => 'node',
+# <md>          :secret => 'false',
+# <md>          :parm_type => 'node'
+
+default['wmq']['advanced'] = "false"
 
 # <> Version of MQSeries to install
 # <md>attribute 'wmq/fixpack',
@@ -42,20 +59,6 @@ default['wmq']['version'] = "8.0"
 # <md>          :max => '20'
 
 default['wmq']['fixpack'] = "5"
-
-# <> Version of GSK To Install
-# <md>attribute 'wmq/gskversion',
-# <md>          :displayname => 'MQSeriesGSKVersion',
-# <md>          :description => 'The Version of GSK install with MQSeries',
-# <md>          :type => 'string',
-# <md>          :required => 'recommended',
-# <md>          :default => '8.0.0-4',
-# <md>          :selectable => 'false',
-# <md>          :precedence_level => 'node',
-# <md>          :secret => 'false',
-# <md>          :parm_type => 'node'
-
-default['wmq']['gskversion'] = "8.0.0-4"
 
 #-------------------------------------------------------------------------------
 # Installation Directories
@@ -431,7 +434,7 @@ default['wmq']['nofile_value'] = '10240'
 # <md>          :$count => '0'
 
 # <> Definition of an MQSeries Queue Manager on a single machine
-# <md>attribute 'wmq/qmgr/qmgr1/name',
+# <md>attribute 'wmq/qmgr/qmgr($INDEX)/name',
 # <md>          :displayname => 'QMGRName',
 # <md>          :description => 'Name of the Queue Manager to Create',
 # <md>          :type => 'string',
@@ -441,7 +444,7 @@ default['wmq']['nofile_value'] = '10240'
 # <md>          :precedence_level => 'node',
 # <md>          :secret => 'false',
 # <md>          :parm_type => 'node'
-# <md>attribute 'wmq/qmgr/qmgr1/description',
+# <md>attribute 'wmq/qmgr/qmgr($INDEX)/description',
 # <md>          :displayname => 'QMGRDesc',
 # <md>          :description => 'Description of the Queue Manager',
 # <md>         :type => 'string',
@@ -451,7 +454,7 @@ default['wmq']['nofile_value'] = '10240'
 # <md>          :precedence_level => 'node',
 # <md>          :secret => 'false',
 # <md>          :parm_type => 'node'
-# <md>attribute 'wmq/qmgr/qmgr1/listener_port',
+# <md>attribute 'wmq/qmgr/qmgr($INDEX)/listener_port',
 # <md>          :displayname => 'QMGRPort',
 # <md>          :description => 'Port the Queue Manager listens on.',
 # <md>          :type => 'string',
@@ -463,7 +466,7 @@ default['wmq']['nofile_value'] = '10240'
 # <md>          :secret => 'false',
 # <md>          :min => '1025',
 # <md>          :max => '50000'
-# <md>attribute 'wmq/qmgr/qmgr1/loggingtype',
+# <md>attribute 'wmq/qmgr/qmgr($INDEX)/loggingtype',
 # <md>          :displayname => 'QMGRLogging',
 # <md>          :description => 'Type of logging to use ll(Linear), lc(Circular)',
 # <md>          :type => 'string',
@@ -475,7 +478,7 @@ default['wmq']['nofile_value'] = '10240'
 # <md>          :precedence_level => 'role',
 # <md>          :secret => 'false',
 # <md>          :parm_type => 'pattern'
-# <md>attribute 'wmq/qmgr/qmgr1/primarylogs',
+# <md>attribute 'wmq/qmgr/qmgr($INDEX)/primarylogs',
 # <md>         :displayname => 'QMGRPrimaryLogs',
 # <md>          :description => 'Number of Primary Logs to create.',
 # <md>          :type => 'string',
@@ -485,7 +488,7 @@ default['wmq']['nofile_value'] = '10240'
 # <md>          :precedence_level => 'role',
 # <md>          :secret => 'false',\
 # <md>          :parm_type => 'pattern'
-# <md>attribute 'wmq/qmgr/qmgr1/secondarylogs',
+# <md>attribute 'wmq/qmgr/qmgr($INDEX)/secondarylogs',
 # <md>          :displayname => 'QMGRSecondaryLogs',
 # <md>          :description => 'Number of Secondary Logs',
 # <md>          :type => 'string',
@@ -495,7 +498,7 @@ default['wmq']['nofile_value'] = '10240'
 # <md>          :precedence_level => 'role',
 # <md>          :secret => 'false',
 # <md>          :parm_type => 'pattern'
-# <md>attribute 'wmq/qmgr/qmgr1/logsize',
+# <md>attribute 'wmq/qmgr/qmgr($INDEX)/logsize',
 # <md>         :displayname => 'QMGRLogSize',
 # <md>          :description => 'Size of the MQSeries Logs',
 # <md>          :type => 'string',
@@ -505,7 +508,7 @@ default['wmq']['nofile_value'] = '10240'
 # <md>          :precedence_level => 'node',
 # <md>          :secret => 'false',
 # <md>          :parm_type => 'node'
-# <md>attribute 'wmq/qmgr/qmgr1/dlq',
+# <md>attribute 'wmq/qmgr/qmgr($INDEX)/dlq',
 # <md>          :displayname => 'QMGRDeadLetterQueue',
 # <md>          :description => 'Queue Manager Dead Letter Queue',
 # <md>          :type => 'string',
@@ -527,3 +530,29 @@ default['wmq']['qmgr'] = {
     'dlq'            => 'SYSTEM.DEAD.LETTER.QUEUE'
   }
 }
+
+# <> WebSphere MQ Service name
+# <md>attribute 'wmq/service_name',
+# <md>          :displayname => 'nofile_value',
+# <md>          :description => 'WebSphere MQ Service name',
+# <md>          :type => 'string',
+# <md>          :required => 'recommended',
+# <md>          :default => 'mq',
+# <md>          :selectable => 'false',
+# <md>          :precedence_level => 'node',
+# <md>          :secret => 'false',
+# <md>          :parm_type => 'node'
+default['wmq']['service_name'] = 'mq'
+
+# <> WebSphere MQ Global Service Control
+# <md>attribute 'wmq/global_mq_service',
+# <md>          :displayname => 'nofile_value',
+# <md>          :description => 'WebSphere MQ Global Service control',
+# <md>          :type => 'string',
+# <md>          :required => 'recommended',
+# <md>          :default => 'true',
+# <md>          :selectable => 'false',
+# <md>          :precedence_level => 'node',
+# <md>          :secret => 'false',
+# <md>          :parm_type => 'node'
+default['wmq']['global_mq_service'] = 'true'
