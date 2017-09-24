@@ -4,7 +4,7 @@
             "wmq": {
                 "qmgr": {
                     "$count": "0",
-                    "$displayname": "Queue Managers",
+                    "$displayname": "IBM MQ Queue Managers",
                     "$key": "qmgr",
                     "$max": "4"
                 }

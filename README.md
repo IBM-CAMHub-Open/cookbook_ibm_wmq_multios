@@ -9,6 +9,7 @@ The wmq cookbook contains features and functions to support the installation and
 
 * RHEL 6.x
 * RHEL 7.x
+* Ubuntu Server 14.04 or greater
 
 ## Versions
 
@@ -173,32 +174,32 @@ Attributes
   </tr>
   <tr>
     <td><code>node['wmq']['advanced']</code></td>
-    <td>Whether to install MQSeries Advanced Componenets - File Transfer, Telemetry, AMS</td>
+    <td>Install IBM MQ Advanced components: File Transfer, IBM MQ Telemetry, and Advanced Message Security.</td>
     <td><code>false</code></td>
   </tr>
   <tr>
     <td><code>node['wmq']['data_dir']</code></td>
-    <td>The MQSeries data directory, reccomended /var/mqm</td>
+    <td>The directory to install IBM MQ Data files, recommended /var/mqm</td>
     <td><code>/var/mqm</code></td>
   </tr>
   <tr>
     <td><code>node['wmq']['fixpack']</code></td>
-    <td>The Fixpack of MQSeries to install.</td>
-    <td><code>5</code></td>
+    <td>The fixpack of IBM MQ to install.</td>
+    <td><code>1</code></td>
   </tr>
   <tr>
     <td><code>node['wmq']['global_mq_service']</code></td>
-    <td>WebSphere MQ Global Service control</td>
-    <td><code>true</code></td>
+    <td>Option to defined service for all IBM MQ Queue Manager</td>
+    <td><code></code></td>
   </tr>
   <tr>
     <td><code>node['wmq']['install_dir']</code></td>
-    <td>The directory to install MQSeries Binaries, reccomended /opt/mqm</td>
+    <td>The directory to install IBM MQ Binaries, recommended /opt/mqm</td>
     <td><code>/opt/mqm</code></td>
   </tr>
   <tr>
     <td><code>node['wmq']['log_dir']</code></td>
-    <td>MQseries Log Directory, reccomended -> node[wmq][data_dir]/log</td>
+    <td>The directory to install IBM MQ Log Directory, recommended -> node[wmq][data_dir]/log</td>
     <td><code>/var/mqm/log</code></td>
   </tr>
   <tr>
@@ -268,17 +269,17 @@ Attributes
   </tr>
   <tr>
     <td><code>node['wmq']['os_users']['mqm']['comment']</code></td>
-    <td>Comment associated with the MQSeries USer</td>
-    <td><code>MQSeries User</code></td>
+    <td>Comment associated with the IBM MQ User</td>
+    <td><code>IBM MQ User</code></td>
   </tr>
   <tr>
     <td><code>node['wmq']['os_users']['mqm']['gid']</code></td>
-    <td>The Group of the MQSeries User</td>
+    <td>Group ID of the Unix OS User for IBM MQ</td>
     <td><code>mqm</code></td>
   </tr>
   <tr>
     <td><code>node['wmq']['os_users']['mqm']['home']</code></td>
-    <td>Home directory of the MQSeries User.</td>
+    <td>Home Directory of Default OS User for IBM MQ User.</td>
     <td><code>/home/mqm</code></td>
   </tr>
   <tr>
@@ -288,17 +289,17 @@ Attributes
   </tr>
   <tr>
     <td><code>node['wmq']['os_users']['mqm']['name']</code></td>
-    <td>Name of the Unix OS User that owns and controls MQSeries</td>
+    <td>Name of the Unix OS User that owns and controls IBM MQ</td>
     <td><code>mqm</code></td>
   </tr>
   <tr>
     <td><code>node['wmq']['os_users']['mqm']['shell']</code></td>
-    <td>Location of the MQSeries User Shell</td>
+    <td>Location of the IBM MQ User Shell</td>
     <td><code>/bin/bash</code></td>
   </tr>
   <tr>
     <td><code>node['wmq']['perms']</code></td>
-    <td>Default permissions for MQSeries files on Unix</td>
+    <td>Default permissions for IBM MQ files on Unix</td>
     <td><code>775</code></td>
   </tr>
   <tr>
@@ -308,7 +309,7 @@ Attributes
   </tr>
   <tr>
     <td><code>node['wmq']['qmgr']['qmgr($INDEX)']['dlq']</code></td>
-    <td>Queue Manager Dead Letter Queue</td>
+    <td>Queue Manager dead letter queue</td>
     <td><code>SYSTEM.DEAD.LETTER.QUEUE</code></td>
   </tr>
   <tr>
@@ -323,7 +324,7 @@ Attributes
   </tr>
   <tr>
     <td><code>node['wmq']['qmgr']['qmgr($INDEX)']['logsize']</code></td>
-    <td>Size of the MQSeries Logs</td>
+    <td>Size of the IBM MQ Logs</td>
     <td><code>16384</code></td>
   </tr>
   <tr>
@@ -333,7 +334,7 @@ Attributes
   </tr>
   <tr>
     <td><code>node['wmq']['qmgr']['qmgr($INDEX)']['primarylogs']</code></td>
-    <td>Number of Primary Logs to create.</td>
+    <td>Number of primary logs to create.</td>
     <td><code>10</code></td>
   </tr>
   <tr>
@@ -343,28 +344,28 @@ Attributes
   </tr>
   <tr>
     <td><code>node['wmq']['qmgr_dir']</code></td>
-    <td>The MQSeries Queue Manager Directory, reccomended node[wmq][data_dir]/qmgrs</td>
+    <td>The directory to install IBM MQ Queue Manager Directory, recommended node[wmq][data_dir]/qmgrs</td>
     <td><code>/var/mqm/qmgrs</code></td>
   </tr>
   <tr>
     <td><code>node['wmq']['service_name']</code></td>
-    <td>WebSphere MQ Service name</td>
+    <td>WebSphere MQ service name</td>
     <td><code>mq</code></td>
   </tr>
   <tr>
     <td><code>node['wmq']['swap_file']</code></td>
-    <td>swap file name</td>
+    <td>Swap file name</td>
     <td><code>/swapfile</code></td>
   </tr>
   <tr>
     <td><code>node['wmq']['swap_file_size']</code></td>
-    <td>Dwap size in mega bytes</td>
+    <td>UNIX Swap size in megabytes</td>
     <td><code>512</code></td>
   </tr>
   <tr>
     <td><code>node['wmq']['version']</code></td>
-    <td>The Version of MQSeries to install, eg, 8.0</td>
-    <td><code>8.0</code></td>
+    <td>The Version of IBM MQ to install, eg, 8.0</td>
+    <td><code>9.0</code></td>
   </tr>
   <tr>
     <td><code>node['wmq']['vm_swappiness']</code></td>

@@ -11,27 +11,27 @@
 # Installation Versions
 #-------------------------------------------------------------------------------
 
-# <> Version of MQSeries to install
+# <> Version of IBM MQ to install
 # <md> attribute 'wmq/version',
-# <md>          :displayname => 'MQSeriesVersion',
-# <md>          :description => 'The Version of MQSeries to install, eg, 8.0',
+# <md>          :displayname => 'IBM MQ Version',
+# <md>          :description => 'The Version of IBM MQ to install, eg, 8.0',
 # <md>          :choice => [ '8.0',
 # <md>                       '9.0' ],
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
-# <md>          :default => '8.0',
+# <md>          :default => '9.0',
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :secret => 'false',
 # <md>          :parm_type => 'node'
 
-default['wmq']['version'] = "8.0"
+default['wmq']['version'] = "9.0"
 
 
 # <> Advanced Installation
 # <md> attribute 'wmq/advanced',
-# <md>          :displayname => 'MQSeriesAdvanced',
-# <md>          :description => 'Whether to install MQSeries Advanced Componenets - File Transfer, Telemetry, AMS',
+# <md>          :displayname => 'IBM MQ Advanced Components',
+# <md>          :description => 'Install IBM MQ Advanced components: File Transfer, IBM MQ Telemetry, and Advanced Message Security.',
 # <md>          :choice => [ 'true',
 # <md>                       'false' ],
 # <md>          :type => 'string',
@@ -44,21 +44,21 @@ default['wmq']['version'] = "8.0"
 
 default['wmq']['advanced'] = "false"
 
-# <> Version of MQSeries to install
+# <> Version of IBM MQ to install
 # <md>attribute 'wmq/fixpack',
-# <md>          :displayname => 'MQSeriesFixpack',
-# <md>          :description => 'The Fixpack of MQSeries to install.',
+# <md>          :displayname => 'IBM MQ Fixpack',
+# <md>          :description => 'The fixpack of IBM MQ to install.',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
-# <md>          :default => '5',
-# <md>          :selectable => 'false',
+# <md>          :default => '1',
+# <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
 # <md>          :min => '1',
 # <md>          :secret => 'false',
 # <md>          :max => '20'
 
-default['wmq']['fixpack'] = "5"
+default['wmq']['fixpack'] = "1"
 
 #-------------------------------------------------------------------------------
 # Installation Directories
@@ -66,12 +66,12 @@ default['wmq']['fixpack'] = "5"
 
 # <> Base Installation Directory
 # <md>attribute 'wmq/install_dir',
-# <md>          :displayname => 'InstallDir',
-# <md>          :description => 'The directory to install MQSeries Binaries, reccomended /opt/mqm',
+# <md>          :displayname => 'IBM MQ Installation Directory',
+# <md>          :description => 'The directory to install IBM MQ Binaries, recommended /opt/mqm',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '/opt/mqm',
-# <md>          :selectable => 'false',
+# <md>          :selectable => 'true',
 # <md>          :precedence_level => 'role',
 # <md>          :secret => 'false',
 # <md>          :parm_type => 'component'
@@ -80,26 +80,26 @@ default['wmq']['install_dir'] = '/opt/mqm'
 
 # <> Base Data Installation Directory
 # <md>attribute 'wmq/data_dir',
-# <md>          :displayname => 'MQSeriesVersion',
-# <md>          :description => 'The MQSeries data directory, reccomended /var/mqm',
+# <md>          :displayname => 'IBM MQ Data Directory',
+# <md>          :description => 'The directory to install IBM MQ Data files, recommended /var/mqm',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '/var/mqm',
-# <md>          :selectable => 'false',
+# <md>          :selectable => 'true',
 # <md>          :precedence_level => 'role',
 # <md>          :secret => 'false',
 # <md>          :parm_type => 'component'
 
 default['wmq']['data_dir'] = '/var/mqm'
 
-# <> WebSphere MQ Server QMGR Directory
+# <> WebSphere MQ Server Queue Manager Directory
 # <md>attribute 'wmq/qmgr_dir',
-# <md>          :displayname => 'MQSeriesVersion',
-# <md>          :description => 'The MQSeries Queue Manager Directory, reccomended node[wmq][data_dir]/qmgrs',
+# <md>          :displayname => 'IBM MQ Queue Manager Directory',
+# <md>          :description => 'The directory to install IBM MQ Queue Manager Directory, recommended node[wmq][data_dir]/qmgrs',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '/var/mqm/qmgrs',
-# <md>          :selectable => 'false',
+# <md>          :selectable => 'true',
 # <md>          :precedence_level => 'role',
 # <md>          :secret => 'false',
 # <md>          :parm_type => 'component'
@@ -108,12 +108,12 @@ default['wmq']['qmgr_dir'] = node['wmq']['data_dir'] + '/qmgrs'
 
 # <> WebSphere MQ Server Log directory
 # <md>attribute 'wmq/log_dir',
-# <md>          :displayname => 'MQSeriesVersion',
-# <md>          :description => 'MQseries Log Directory, reccomended -> node[wmq][data_dir]/log',
+# <md>          :displayname => 'IBM MQ Log Directory',
+# <md>          :description => 'The directory to install IBM MQ Log Directory, recommended -> node[wmq][data_dir]/log',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '/var/mqm/log',
-# <md>          :selectable => 'false',
+# <md>          :selectable => 'true',
 # <md>          :precedence_level => 'role',
 # <md>          :secret => 'false',
 # <md>          :parm_type => 'component'
@@ -125,62 +125,62 @@ default['wmq']['log_dir'] = node['wmq']['data_dir'] + '/log'
 #-------------------------------------------------------------------------------
 
 # <md>attribute 'wmq/os_users/mqm/name',
-# <md>          :displayname => 'MQSeriesUser',
-# <md>          :description => 'Name of the Unix OS User that owns and controls MQSeries',
+# <md>          :displayname => 'IBM MQ OS Username',
+# <md>          :description => 'Name of the Unix OS User that owns and controls IBM MQ',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => 'mqm',
-# <md>          :selectable => 'false',
+# <md>          :selectable => 'true',
 # <md>          :precedence_level => 'role',
 # <md>          :secret => 'false',
 # <md>          :parm_type => 'component'
 # <md>attribute 'wmq/os_users/mqm/gid',
-# <md>          :displayname => 'MQUSerGID',
-# <md>          :description => 'The Group of the MQSeries User',
+# <md>          :displayname => 'IBM MQ OS Group ID',
+# <md>          :description => 'Group ID of the Unix OS User for IBM MQ',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => 'mqm',
-# <md>          :selectable => 'false',
+# <md>          :selectable => 'true',
 # <md>          :precedence_level => 'role',
 # <md>          :secret => 'false',
 # <md>          :parm_type => 'component'
 # <md>attribute 'wmq/os_users/mqm/ldap_user',
-# <md>          :displayname => 'MQUSerLDAP',
+# <md>          :displayname => 'IBM MQ Use LDAP for Authentication',
 # <md>          :description => 'A flag which indicates whether to create the MQ USer locally, or utilise an LDAP based user.',
 # <md>          :type => 'boolean',
 # <md>          :required => 'recommended',
 # <md>          :default => 'false',
-# <md>          :selectable => 'false',
+# <md>          :selectable => 'true',
 # <md>          :precedence_level => 'role',
 # <md>          :secret => 'false',
 # <md>          :parm_type => 'component'
 # <md>attribute 'wmq/os_users/mqm/home',
-# <md>          :displayname => 'MQUserHomeDir',
-# <md>          :description => 'Home directory of the MQSeries User.',
+# <md>          :displayname => 'IBM MQ OS User Home Directory',
+# <md>          :description => 'Home Directory of Default OS User for IBM MQ User.',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '/home/mqm',
-# <md>          :selectable => 'false',
+# <md>          :selectable => 'true',
 # <md>          :precedence_level => 'role',
 # <md>          :secret => 'false',
 # <md>          :parm_type => 'component'
 # <md>attribute 'wmq/os_users/mqm/comment',
-# <md>          :displayname => 'MQUserComment',
-# <md>          :description => 'Comment associated with the MQSeries USer',
+# <md>          :displayname => 'IBM MQ OS User Comment',
+# <md>          :description => 'Comment associated with the IBM MQ User',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
-# <md>          :default => 'MQSeries User',
-# <md>          :selectable => 'false',
+# <md>          :default => 'IBM MQ User',
+# <md>          :selectable => 'true',
 # <md>          :precedence_level => 'role',
 # <md>          :secret => 'false',
 # <md>          :parm_type => 'component'
 # <md>attribute 'wmq/os_users/mqm/shell',
-# <md>          :displayname => 'MQUserShell',
-# <md>          :description => 'Location of the MQSeries User Shell',
+# <md>          :displayname => 'IBM MQ OS User Shell',
+# <md>          :description => 'Location of the IBM MQ User Shell',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '/bin/bash',
-# <md>          :selectable => 'false',
+# <md>          :selectable => 'true',
 # <md>          :precedence_level => 'role',
 # <md>          :secret => 'false',
 # <md>          :parm_type => 'component'
@@ -192,7 +192,7 @@ default['wmq']['os_users'] = {
     'gid' => 'mqm',
     'ldap_user' => 'false',
     'home' => "/home/mqm",
-    'comment' => 'MQSeries User',
+    'comment' => 'IBM MQ User',
     'shell' => '/bin/bash'
   }
 }
@@ -204,12 +204,12 @@ default['wmq']['os_users'] = {
 
 # <> default file/directory parameters
 # <md>attribute 'wmq/perms',
-# <md>          :displayname => 'perms',
-# <md>          :description => 'Default permissions for MQSeries files on Unix',
+# <md>          :displayname => 'IBM MQ OS Permissions',
+# <md>          :description => 'Default permissions for IBM MQ files on Unix',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '775',
-# <md>          :selectable => 'false',
+# <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :secret => 'false',
 # <md>          :parm_type => 'node'
@@ -217,12 +217,12 @@ default['wmq']['perms'] = '775'
 
 # <> swap size in mega bytes
 # <md>attribute 'wmq/swap_file_size',
-# <md>          :displayname => 'swap_file_size',
-# <md>          :description => 'Dwap size in mega bytes',
+# <md>          :displayname => 'IBM MQ Unix swap file size',
+# <md>          :description => 'UNIX Swap size in megabytes',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '512',
-# <md>          :selectable => 'false',
+# <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :secret => 'false',
 # <md>          :parm_type => 'node'
@@ -230,12 +230,12 @@ default['wmq']['swap_file_size'] = '512'
 
 # <> swap file name
 # <md>attribute 'wmq/swap_file',
-# <md>          :displayname => 'swap_file',
-# <md>          :description => 'swap file name',
+# <md>          :displayname => 'Swap Filename',
+# <md>          :description => 'Swap file name',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '/swapfile',
-# <md>          :selectable => 'false',
+# <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :secret => 'false',
 # <md>          :parm_type => 'node'
@@ -243,12 +243,12 @@ default['wmq']['swap_file'] = '/swapfile'
 
 # <> WebSphere MQ Server Kernel Configuration net_core_rmem_default
 # <md>attribute 'wmq/net_core_rmem_default',
-# <md>          :displayname => 'net_core_rmem_default',
+# <md>          :displayname => 'IBM MQ Kernel net_core_rmem_default',
 # <md>          :description => 'WebSphere MQ Server Kernel Configuration net_core_rmem_default',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '262144',
-# <md>          :selectable => 'false',
+# <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :secret => 'false',
 # <md>          :parm_type => 'node'
@@ -256,12 +256,12 @@ default['wmq']['net_core_rmem_default'] = '262144'
 
 # <> WebSphere MQ Server Kernel Configuration net_core_rmem_max
 # <md>attribute 'wmq/net_core_rmem_max',
-# <md>          :displayname => 'net_core_rmem_max',
+# <md>          :displayname => 'IBM MQ Kernel net_core_rmem_max',
 # <md>          :description => 'WebSphere MQ Server Kernel Configuration net_core_rmem_max',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '4194304',
-# <md>          :selectable => 'false',
+# <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :secret => 'false',
 # <md>          :parm_type => 'node'
@@ -269,12 +269,12 @@ default['wmq']['net_core_rmem_max'] = '4194304'
 
 # <> WebSphere MQ Server Kernel Configuration net_core_wmem_default
 # <md>attribute 'wmq/net_core_wmem_default',
-# <md>          :displayname => 'net_core_wmem_default',
+# <md>          :displayname => 'IBM MQ Kernel net_core_wmem_default',
 # <md>          :description => 'WebSphere MQ Server Kernel Configuration net_core_wmem_default',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '262144',
-# <md>          :selectable => 'false',
+# <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :secret => 'false',
 # <md>          :parm_type => 'node'
@@ -282,12 +282,12 @@ default['wmq']['net_core_wmem_default'] = '262144'
 
 # <> WebSphere MQ Server Kernel Configuration net_core_wmem_max
 # <md>attribute 'wmq/net_core_wmem_max',
-# <md>          :displayname => 'net_core_wmem_max',
+# <md>          :displayname => 'IBM MQ Kernel net_core_wmem_max',
 # <md>          :description => 'WebSphere MQ Server Kernel Configuration net_core_wmem_max',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '1048576',
-# <md>          :selectable => 'false',
+# <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :secret => 'false',
 # <md>          :parm_type => 'node'
@@ -295,12 +295,12 @@ default['wmq']['net_core_wmem_max'] = '1048576'
 
 # <> WebSphere MQ Server Kernel Configuration net_ipv4_tcp_rmem
 # <md>attribute 'wmq/net_ipv4_tcp_rmem',
-# <md>          :displayname => 'net_ipv4_tcp_rmem',
+# <md>          :displayname => 'IBM MQ Kernel net_ipv4_tcp_rmem',
 # <md>          :description => 'WebSphere MQ Server Kernel Configuration net_ipv4_tcp_rmem',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '4096    87380   4194304',
-# <md>          :selectable => 'false',
+# <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :secret => 'false',
 # <md>          :parm_type => 'node'
@@ -308,12 +308,12 @@ default['wmq']['net_ipv4_tcp_rmem'] = '4096    87380   4194304'
 
 # <> WebSphere MQ Server Kernel Configuration net_ipv4_tcp_wmem
 # <md>attribute 'wmq/net_ipv4_tcp_wmem',
-# <md>          :displayname => 'net_ipv4_tcp_wmem',
+# <md>          :displayname => 'IBM MQ Kernel net_ipv4_tcp_wmem',
 # <md>          :description => 'WebSphere MQ Server Kernel Configuration net_ipv4_tcp_wmem',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '4096    87380   4194304',
-# <md>          :selectable => 'false',
+# <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :secret => 'false',
 # <md>          :parm_type => 'node'
@@ -321,12 +321,12 @@ default['wmq']['net_ipv4_tcp_wmem'] = '4096    87380   4194304'
 
 # <> WebSphere MQ Server Kernel Configuration net_ipv4_tcp_sack
 # <md>attribute 'wmq/net_ipv4_tcp_sack',
-# <md>          :displayname => 'net_ipv4_tcp_sack',
+# <md>          :displayname => 'IBM MQ Kernel net_ipv4_tcp_sack',
 # <md>          :description => 'WebSphere MQ Server Kernel Configuration net_ipv4_tcp_sack',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '1',
-# <md>          :selectable => 'false',
+# <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :secret => 'false',
 # <md>          :parm_type => 'node'
@@ -334,12 +334,12 @@ default['wmq']['net_ipv4_tcp_sack'] = '1'
 
 # <> WebSphere MQ Server Kernel Configuration net_ipv4_tcp_timestamps
 # <md>attribute 'wmq/net_ipv4_tcp_timestamps',
-# <md>          :displayname => 'net_ipv4_tcp_timestamps',
+# <md>          :displayname => 'IBM MQ Kernel net_ipv4_tcp_timestamps',
 # <md>          :description => 'WebSphere MQ Server Kernel Configuration net_ipv4_tcp_timestamps',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '1',
-# <md>          :selectable => 'false',
+# <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :secret => 'false',
 # <md>          :parm_type => 'node'
@@ -347,12 +347,12 @@ default['wmq']['net_ipv4_tcp_timestamps'] = '1'
 
 # <> WebSphere MQ Server Kernel Configuration net_ipv4_tcp_window_scaling
 # <md>attribute 'wmq/net_ipv4_tcp_window_scaling',
-# <md>          :displayname => 'net_ipv4_tcp_window_scaling',
+# <md>          :displayname => 'IBM MQ Kernel net_ipv4_tcp_window_scaling',
 # <md>          :description => 'WebSphere MQ Server Kernel Configuration net_ipv4_tcp_window_scaling',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '1',
-# <md>          :selectable => 'false',
+# <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :secret => 'false',
 # <md>          :parm_type => 'node'
@@ -360,24 +360,24 @@ default['wmq']['net_ipv4_tcp_window_scaling'] = '1'
 
 # <> WebSphere MQ Server Kernel Configuration net_ipv4_tcp_keepalive_time
 # <md>attribute 'wmq/net_ipv4_tcp_keepalive_time',
-# <md>          :displayname => 'net_ipv4_tcp_keepalive_time',
+# <md>          :displayname => 'IBM MQ Kernel net_ipv4_tcp_keepalive_time',
 # <md>          :description => 'WebSphere MQ Server Kernel Configuration net_ipv4_tcp_keepalive_time',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '7200',
-# <md>          :selectable => 'false',
+# <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node'
 default['wmq']['net_ipv4_tcp_keepalive_time'] = '7200'
 
 # <> WebSphere MQ Server Kernel Configuration net_ipv4_tcp_keepalive_intvl
 # <md>attribute 'wmq/net_ipv4_tcp_keepalive_intvl',
-# <md>          :displayname => 'net_ipv4_tcp_keepalive_intvl',
+# <md>          :displayname => 'IBM MQ Kernel net_ipv4_tcp_keepalive_intvl',
 # <md>          :description => 'WebSphere MQ Server Kernel Configuration net_ipv4_tcp_keepalive_intvl',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '75',
-# <md>          :selectable => 'false',
+# <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :secret => 'false',
 # <md>          :parm_type => 'node'
@@ -386,12 +386,12 @@ default['wmq']['net_ipv4_tcp_keepalive_intvl'] = '75'
 
 # <> WebSphere MQ Server Kernel Configuration net_ipv4_tcp_fin_timeout
 # <md>attribute 'wmq/net_ipv4_tcp_fin_timeout',
-# <md>          :displayname => 'net_ipv4_tcp_fin_timeout',
+# <md>          :displayname => 'IBM MQ Kernel net_ipv4_tcp_fin_timeout',
 # <md>          :description => 'WebSphere MQ Server Kernel Configuration net_ipv4_tcp_fin_timeout',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '60',
-# <md>          :selectable => 'false',
+# <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :secret => 'false',
 # <md>          :parm_type => 'node'
@@ -399,12 +399,12 @@ default['wmq']['net_ipv4_tcp_fin_timeout'] = '60'
 
 # <> WebSphere MQ Server Kernel Configuration vm_swappiness
 # <md>attribute 'wmq/vm_swappiness',
-# <md>          :displayname => 'vm_swappiness',
+# <md>          :displayname => 'IBM MQ Kernel vm_swappiness',
 # <md>          :description => 'WebSphere MQ Server Kernel Configuration vm_swappiness',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '0',
-# <md>          :selectable => 'false',
+# <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :secret => 'false',
 # <md>          :parm_type => 'node'
@@ -412,12 +412,12 @@ default['wmq']['vm_swappiness'] = '0'
 
 # <> WebSphere MQ Server Ulimit Nofile Value
 # <md>attribute 'wmq/nofile_value',
-# <md>          :displayname => 'nofile_value',
+# <md>          :displayname => 'IBM MQ Kernel Ulimit nofile_value',
 # <md>          :description => 'WebSphere MQ Server Ulimit Nofile Value',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '10240',
-# <md>          :selectable => 'false',
+# <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :secret => 'false',
 # <md>          :parm_type => 'node'
@@ -428,50 +428,50 @@ default['wmq']['nofile_value'] = '10240'
 #-------------------------------------------------------------------------------
 
 # <md>attribute '$dynamicmaps/wmq/qmgr',
-# <md>          :$displayname =>  'Queue Managers',
+# <md>          :$displayname =>  'IBM MQ Queue Managers',
 # <md>          :$key => 'qmgr',
 # <md>          :$max => '4',
 # <md>          :$count => '0'
 
-# <> Definition of an MQSeries Queue Manager on a single machine
+# <> Definition of an IBM MQ Queue Manager on a single machine
 # <md>attribute 'wmq/qmgr/qmgr($INDEX)/name',
-# <md>          :displayname => 'QMGRName',
+# <md>          :displayname => 'IBM MQ Queue Manager Name',
 # <md>          :description => 'Name of the Queue Manager to Create',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => 'qmgr1',
-# <md>          :selectable => 'false',
+# <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :secret => 'false',
 # <md>          :parm_type => 'node'
 # <md>attribute 'wmq/qmgr/qmgr($INDEX)/description',
-# <md>          :displayname => 'QMGRDesc',
+# <md>          :displayname => 'IBM MQ Queue Manager Description',
 # <md>          :description => 'Description of the Queue Manager',
 # <md>         :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => 'Queue Manager 1',
-# <md>          :selectable => 'false',
+# <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :secret => 'false',
 # <md>          :parm_type => 'node'
 # <md>attribute 'wmq/qmgr/qmgr($INDEX)/listener_port',
-# <md>          :displayname => 'QMGRPort',
+# <md>          :displayname => 'IBM MQ Queue Manager Listener Port',
 # <md>          :description => 'Port the Queue Manager listens on.',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '1414',
-# <md>          :selectable => 'false',
+# <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
 # <md>          :secret => 'false',
 # <md>          :min => '1025',
 # <md>          :max => '50000'
 # <md>attribute 'wmq/qmgr/qmgr($INDEX)/loggingtype',
-# <md>          :displayname => 'QMGRLogging',
+# <md>          :displayname => 'IBM MQ Queue Manager Logging',
 # <md>          :description => 'Type of logging to use ll(Linear), lc(Circular)',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
-# <md>         :default => 'lc',
+# <md>          :default => 'lc',
 # <md>          :choice => [ 'll',
 # <md>                       'lc' ],
 # <md>          :selectable => 'true',
@@ -479,42 +479,42 @@ default['wmq']['nofile_value'] = '10240'
 # <md>          :secret => 'false',
 # <md>          :parm_type => 'pattern'
 # <md>attribute 'wmq/qmgr/qmgr($INDEX)/primarylogs',
-# <md>         :displayname => 'QMGRPrimaryLogs',
-# <md>          :description => 'Number of Primary Logs to create.',
+# <md>         :displayname => 'IBM MQ Queue Manager Primary Logs',
+# <md>          :description => 'Number of primary logs to create.',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '10',
-# <md>          :selectable => 'false',
+# <md>          :selectable => 'true',
 # <md>          :precedence_level => 'role',
 # <md>          :secret => 'false',\
 # <md>          :parm_type => 'pattern'
 # <md>attribute 'wmq/qmgr/qmgr($INDEX)/secondarylogs',
-# <md>          :displayname => 'QMGRSecondaryLogs',
+# <md>          :displayname => 'IBM MQ Queue Manager Secondary Logs',
 # <md>          :description => 'Number of Secondary Logs',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '20',
-# <md>          :selectable => 'false',
+# <md>          :selectable => 'true',
 # <md>          :precedence_level => 'role',
 # <md>          :secret => 'false',
 # <md>          :parm_type => 'pattern'
 # <md>attribute 'wmq/qmgr/qmgr($INDEX)/logsize',
-# <md>         :displayname => 'QMGRLogSize',
-# <md>          :description => 'Size of the MQSeries Logs',
+# <md>         :displayname => 'IBM MQ Queue Manager Log Size',
+# <md>          :description => 'Size of the IBM MQ Logs',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '16384',
-# <md>          :selectable => 'false',
+# <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :secret => 'false',
 # <md>          :parm_type => 'node'
 # <md>attribute 'wmq/qmgr/qmgr($INDEX)/dlq',
-# <md>          :displayname => 'QMGRDeadLetterQueue',
-# <md>          :description => 'Queue Manager Dead Letter Queue',
+# <md>          :displayname => 'IBM MQ Queue Manager dead letter queue',
+# <md>          :description => 'Queue Manager dead letter queue',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => 'SYSTEM.DEAD.LETTER.QUEUE',
-# <md>         :selectable => 'false',
+# <md>          :selectable => 'true',
 # <md>          :precedence_level => 'role',
 # <md>          :secret => 'false',
 # <md>          :parm_type => 'pattern'
@@ -533,12 +533,12 @@ default['wmq']['qmgr'] = {
 
 # <> WebSphere MQ Service name
 # <md>attribute 'wmq/service_name',
-# <md>          :displayname => 'nofile_value',
-# <md>          :description => 'WebSphere MQ Service name',
+# <md>          :displayname => 'IBM MQ Service Name',
+# <md>          :description => 'WebSphere MQ service name',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => 'mq',
-# <md>          :selectable => 'false',
+# <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :secret => 'false',
 # <md>          :parm_type => 'node'
@@ -546,12 +546,12 @@ default['wmq']['service_name'] = 'mq'
 
 # <> WebSphere MQ Global Service Control
 # <md>attribute 'wmq/global_mq_service',
-# <md>          :displayname => 'nofile_value',
-# <md>          :description => 'WebSphere MQ Global Service control',
+# <md>          :displayname => 'IBM MQ Global Service control',
+# <md>          :description => 'Option to defined service for all IBM MQ Queue Manager's',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => 'true',
-# <md>          :selectable => 'false',
+# <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :secret => 'false',
 # <md>          :parm_type => 'node'
