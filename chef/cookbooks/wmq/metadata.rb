@@ -10,7 +10,7 @@ The wmq cookbook contains features and functions to support the installation and
 
 ## Platforms Support
 
-* RHEL 6.x
+* RHEL 6.x (NOTE, MQ8 is not supported on RHEL6)
 * RHEL 7.x
 * Ubuntu Server 14.04 or greater
 
@@ -155,7 +155,7 @@ default['ibm_internal']['vault']['item']       - Vault Item to reference, will b
 ```
 EOH
 
-version '0.1.48'
+version '0.1.49'
 attribute 'wmq/advanced',
           :choice => ['true', 'false'],
           :default => 'false',
@@ -426,7 +426,7 @@ attribute 'wmq/qmgr/qmgr($INDEX)/dlq',
           :default => 'SYSTEM.DEAD.LETTER.QUEUE',
           :description => 'Queue Manager dead letter queue',
           :displayname => 'IBM MQ Queue Manager dead letter queue',
-          :parm_type => 'pattern',
+          :parm_type => 'node',
           :precedence_level => 'role',
           :required => 'recommended',
           :secret => 'false',
@@ -450,7 +450,7 @@ attribute 'wmq/qmgr/qmgr($INDEX)/loggingtype',
           :description => 'Type of logging to use ll(Linear), lc(Circular)',
           :displayname => 'IBM MQ Queue Manager Logging',
           :options => ['ll', 'lc'],
-          :parm_type => 'pattern',
+          :parm_type => 'node',
           :precedence_level => 'role',
           :required => 'recommended',
           :secret => 'false',
@@ -480,7 +480,7 @@ attribute 'wmq/qmgr/qmgr($INDEX)/primarylogs',
           :default => '10',
           :description => 'Number of primary logs to create.',
           :displayname => 'IBM MQ Queue Manager Primary Logs',
-          :parm_type => 'pattern',
+          :parm_type => 'node',
           :precedence_level => 'role',
           :required => 'recommended',
           :secret => 'false',
@@ -490,7 +490,7 @@ attribute 'wmq/qmgr/qmgr($INDEX)/secondarylogs',
           :default => '20',
           :description => 'Number of Secondary Logs',
           :displayname => 'IBM MQ Queue Manager Secondary Logs',
-          :parm_type => 'pattern',
+          :parm_type => 'node',
           :precedence_level => 'role',
           :required => 'recommended',
           :secret => 'false',

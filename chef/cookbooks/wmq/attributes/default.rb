@@ -477,7 +477,7 @@ default['wmq']['nofile_value'] = '10240'
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'role',
 # <md>          :secret => 'false',
-# <md>          :parm_type => 'pattern'
+# <md>          :parm_type => 'node'
 # <md>attribute 'wmq/qmgr/qmgr($INDEX)/primarylogs',
 # <md>         :displayname => 'IBM MQ Queue Manager Primary Logs',
 # <md>          :description => 'Number of primary logs to create.',
@@ -487,7 +487,7 @@ default['wmq']['nofile_value'] = '10240'
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'role',
 # <md>          :secret => 'false',\
-# <md>          :parm_type => 'pattern'
+# <md>          :parm_type => 'node'
 # <md>attribute 'wmq/qmgr/qmgr($INDEX)/secondarylogs',
 # <md>          :displayname => 'IBM MQ Queue Manager Secondary Logs',
 # <md>          :description => 'Number of Secondary Logs',
@@ -497,7 +497,7 @@ default['wmq']['nofile_value'] = '10240'
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'role',
 # <md>          :secret => 'false',
-# <md>          :parm_type => 'pattern'
+# <md>          :parm_type => 'node'
 # <md>attribute 'wmq/qmgr/qmgr($INDEX)/logsize',
 # <md>         :displayname => 'IBM MQ Queue Manager Log Size',
 # <md>          :description => 'Size of the IBM MQ Logs',
@@ -517,7 +517,7 @@ default['wmq']['nofile_value'] = '10240'
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'role',
 # <md>          :secret => 'false',
-# <md>          :parm_type => 'pattern'
+# <md>          :parm_type => 'node'
 default['wmq']['qmgr'] = {
   'qmgr($INDEX)' => {
     'name' => 'QMGR1',

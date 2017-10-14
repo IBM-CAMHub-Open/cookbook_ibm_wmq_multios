@@ -13,9 +13,10 @@
                 "9.0.0.1"
             ],
             "platforms": [
-                "RHEL 6.x",
+                "RHEL 6.x (Not for MQ9)",
                 "RHEL 7.x",
-                "Ubuntu 14.0.4"
+                "Ubuntu 14.0.4",
+                "Ubuntu 16"
             ]
         },
         "disk": {
@@ -82,7 +83,7 @@
        "os_repository": {
             "redhat WMQ8.0": {
                 "x86_64": {
-                    "libraries": "ksh, binutils, gcc, glibc, libgcc, openssl, gtk2, libstdc++.x86_64, libstdc++.i686"
+                    "libraries": "ksh, binutils, gcc, glibc, libgcc, openssl, gtk2, libstdc++.x86_64, libstdc++.i686, redhat-lsb-core"
                 }
             },
             "redhat WMQ9.0": {
@@ -92,7 +93,7 @@
             },
             "debian WMQ8.0": {
                 "x86_64": {
-                    "libraries": "ksh, binutils, gcc, gcc-multilib, openssl, libgtk2.0-0, rpm"
+                    "libraries": "ksh, binutils, gcc, gcc-multilib, openssl, libgtk2.0-0, rpm, lsb-core"
                 }
             },
             "debian WMQ9.0": {

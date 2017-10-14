@@ -124,7 +124,7 @@ when '8.0'
       force_default['wmq']['fixpack_names'] = {
         'fixpack' => { 'filename' => "8.0.0-WS-MQ-LinuxX64-FP000#{node['wmq']['fixpack']}.tar.gz" }
       }
-      force_default['wmq']['prereqs'] = ['ksh', 'binutils', 'gcc', 'glibc', 'libgcc', 'openssl', 'gtk2', 'libstdc++.x86_64', 'libstdc++.i686']
+      force_default['wmq']['prereqs'] = ['ksh', 'binutils', 'gcc', 'glibc', 'libgcc', 'openssl', 'gtk2', 'libstdc++.x86_64', 'libstdc++.i686', 'redhat-lsb-core']
     when 'powerpc'
       force_default['wmq']['archive_names'] = {
         'base' => { 'filename' => 'WS_MQ_FOR_AIX_V8.0_EIMAGE.tar.tgz',
@@ -154,7 +154,7 @@ when '8.0'
       force_default['wmq']['fixpack_names'] = {
         'fixpack' => { 'filename' => "8.0.0-WS-MQ-LinuxX64-FP000#{node['wmq']['fixpack']}.tar.gz" }
       }
-      force_default['wmq']['prereqs'] = ['ksh', 'binutils', 'gcc', 'gcc-multilib', 'openssl', 'libgtk2.0-0', 'rpm']
+      force_default['wmq']['prereqs'] = ['ksh', 'binutils', 'gcc', 'gcc-multilib', 'openssl', 'libgtk2.0-0', 'rpm', 'lsb-core']
     when 'powerpc'
       force_default['wmq']['archive_names'] = {
         'base' => { 'filename' => 'WS_MQ_FOR_AIX_V8.0_EIMAGE.tar.tgz',

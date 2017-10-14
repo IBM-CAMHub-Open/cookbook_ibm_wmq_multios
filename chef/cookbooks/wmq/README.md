@@ -7,7 +7,7 @@ The wmq cookbook contains features and functions to support the installation and
 
 ## Platforms Support
 
-* RHEL 6.x
+* RHEL 6.x (NOTE, MQ8 is not supported on RHEL6)
 * RHEL 7.x
 * Ubuntu Server 14.04 or greater
 
