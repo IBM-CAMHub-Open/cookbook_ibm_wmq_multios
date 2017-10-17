@@ -437,6 +437,7 @@ This recipe wil check the target platform to ensure installation is possible
 Create the MQ service and enables it on RHEL 7
 Determine Service Type, systemd or not
 Create the MQ service file
+Create Upstart Service File
 Create the MQ service script
 Enable and start the httpd service
 Enable and start the httpd service

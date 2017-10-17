@@ -155,7 +155,7 @@ default['ibm_internal']['vault']['item']       - Vault Item to reference, will b
 ```
 EOH
 
-version '0.1.49'
+version '1.0.0'
 attribute 'wmq/advanced',
           :choice => ['true', 'false'],
           :default => 'false',
@@ -592,6 +592,7 @@ recipe 'wmq::service.rb', '
 Create the MQ service and enables it on RHEL 7
 Determine Service Type, systemd or not
 Create the MQ service file
+Create Upstart Service File
 Create the MQ service script
 Enable and start the httpd service
 Enable and start the httpd service

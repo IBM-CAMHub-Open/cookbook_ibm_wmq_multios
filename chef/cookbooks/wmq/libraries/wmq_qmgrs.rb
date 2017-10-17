@@ -19,6 +19,13 @@ module WMQQmgrs
     !output.stdout.to_s.empty?
   end
 
+  def wmq_qmgr_started?(qmgr_name)
+    #Returns a boolean depending on whether a queue manager Running or not
+    run_cmd = node['wmq']['install_dir'] + '/bin/dspmq | grep ' + qmgr_name + ' | grep Running'
+    output = shell_out(run_cmd)
+    !output.stdout.to_s.empty?
+  end
+
   def execute_create_qmgr(qmgrobject)
     # Creates a queue manager if not already created
     name = qmgrobject['name']
@@ -48,13 +55,6 @@ module WMQQmgrs
     end
   end
 
-  def wmq_qmgr_started?(qmgr_name)
-    #Returns a boolean depending on whether a queue manager Running or not
-    run_cmd = node['wmq']['install_dir'] + '/bin/dspmq | grep ' + qmgr_name + ' | grep Running'
-    output = shell_out(run_cmd)
-    !output.stdout.to_s.empty?
-  end
-
   def execute_start_qmgr(qmgrobject)
     # Creates a queue manager if not already created
     name = qmgrobject['name']
@@ -66,7 +66,8 @@ module WMQQmgrs
       command "#{node['wmq']['install_dir']}/bin/strmqm #{name}"
       user node['wmq']['os_users']['mqm']['name']
       group node['wmq']['os_users']['mqm']['gid']
-      only_if { !wmq_qmgr_started?(name) }
+      returns [0, 5]
+      not_if { wmq_qmgr_started?(name) }
       only_if { wmq_qmgr_defined?(name) }
     end
   end
@@ -81,6 +82,7 @@ module WMQQmgrs
     execute "stop_qmgr" do
       command "#{node['wmq']['install_dir']}/bin/endmqm -w #{name}"
       user node['wmq']['os_users']['mqm']['name']
+      returns [0, 40]
       group node['wmq']['os_users']['mqm']['gid']
       only_if { wmq_qmgr_started?(name) }
     end

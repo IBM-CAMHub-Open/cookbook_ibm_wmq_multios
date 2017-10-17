@@ -19,6 +19,18 @@ template "/etc/systemd/system/#{node['wmq']['service_name']}.service" do
   only_if { systemd == true }
 end
 
+# <> Create Upstart Service File
+template "/etc/init/#{node['wmq']['service_name']}.conf" do
+  source 'mq.service.upstart.erb'
+  cookbook 'wmq' # specified to avoid FC033 warning: https://github.com/acrmp/foodcritic/issues/449
+  owner 'root'
+  group 'root'
+  mode 0644
+  only_if { systemd == true }
+  only_if { Dir.exist?('/etc/init') }
+end
+
+
 # <> Create the MQ service script
 
 template "#{node['wmq']['os_users']['mqm']['home']}/mq-service.sh" do
@@ -46,19 +58,17 @@ template "/etc/init.d/#{node['wmq']['service_name']}" do
   only_if { systemd == false }
 end
 
-
 # <> Enable and start the httpd service
 Chef::Log.info("Running the reload-daemon command on systemd enabled linux systems")
 case node['platform_family']
 when 'rhel', 'debian'
-  if node['platform_version'].start_with?("7.", "16.")
-    execute 'daemon-reload' do
-      command "/bin/systemctl daemon-reload"
-      action :run
-      user 'root'
-      group 'root'
-      only_if { File.exist?("/etc/systemd/system/#{node['wmq']['service_name']}.service") }
-    end
+  execute 'daemon-reload' do
+    command "/bin/systemctl daemon-reload"
+    action :run
+    user 'root'
+    group 'root'
+    only_if { systemd == true }
+    only_if { File.exist?('/bin/systemctl') }
   end
 end
 
@@ -70,7 +80,6 @@ execute 'mqseries-chkconfig' do
   group 'root'
   only_if { systemd == false }
 end
-
 
 # <> Enable the MQ service
 service node['wmq']['service_name'] do
