@@ -155,7 +155,7 @@ default['ibm_internal']['vault']['item']       - Vault Item to reference, will b
 ```
 EOH
 
-version '1.0.1'
+version '1.0.2'
 attribute 'wmq/advanced',
           :choice => ['true', 'false'],
           :default => 'false',
