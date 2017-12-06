@@ -124,7 +124,7 @@ when '8.0'
       force_default['wmq']['fixpack_names'] = {
         'fixpack' => { 'filename' => "8.0.0-WS-MQ-LinuxX64-FP000#{node['wmq']['fixpack']}.tar.gz" }
       }
-      force_default['wmq']['prereqs'] = ['ksh', 'binutils', 'gcc', 'glibc', 'libgcc', 'openssl', 'gtk2', 'libstdc++.x86_64', 'libstdc++.i686', 'redhat-lsb-core']
+      force_default['wmq']['prereqs'] = %w(ksh binutils gcc glibc libgcc openssl gtk2 libstdc++ libstdc++.i686 redhat-lsb-core)
     when 'powerpc'
       force_default['wmq']['archive_names'] = {
         'base' => { 'filename' => 'WS_MQ_FOR_AIX_V8.0_EIMAGE.tar.tgz',
@@ -133,7 +133,7 @@ when '8.0'
       force_default['wmq']['fixpack_names'] = {
         'fixpack' => { 'filename' => "8.0.0-WS-MQ-LinuxPPC64-FP000#{node['wmq']['fixpack']}.tar.gz" }
       }
-      force_default['wmq']['prereqs'] = ['ksh', 'binutils', 'gcc', 'glibc', 'libgcc', 'openssl', 'gtk2', 'libstdc++.ppc64', 'libstdc++.ppc']
+      force_default['wmq']['prereqs'] = ['ksh', 'binutils', 'gcc', 'glibc', 'libgcc', 'openssl', 'gtk2', 'libstdc++.ppc libstdc++.ppc64']
     when 's390x'
       force_default['wmq']['archive_names'] = {
         'base' => { 'filename' => 'WS_MQ_LINUX_SYS_Z_64B_V8.0_IMG.tar.gz',
@@ -187,7 +187,7 @@ when '9.0'
       force_default['wmq']['fixpack_names'] = {
         'fixpack' => { 'filename' => "9.0.0-IBM-MQ-LinuxX64-FP000#{node['wmq']['fixpack']}.tar.gz" }
       }
-      force_default['wmq']['prereqs'] = ['ksh', 'binutils', 'gcc', 'glibc', 'libgcc', 'openssl', 'gtk2', 'libstdc++.x86_64', 'libstdc++.i686', 'redhat-lsb-core']
+      force_default['wmq']['prereqs'] = %w(ksh binutils gcc glibc libgcc openssl gtk2 libstdc++ libstdc++.i686 redhat-lsb-core)
     when 'powerpc'
       force_default['wmq']['archive_names'] = {
         'base' => { 'filename' => 'WS_MQ_FOR_AIX_V9.0.0_EIMAGE.tar.tgz',

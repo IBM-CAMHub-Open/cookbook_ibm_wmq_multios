@@ -172,7 +172,6 @@ case node['platform_family']
 when 'rhel', 'debian'
   prereqs.each do |p|
     package p do
-      package_name p
       action :upgrade
     end
   end
