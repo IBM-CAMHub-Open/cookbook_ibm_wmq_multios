@@ -124,7 +124,7 @@ when '8.0'
       force_default['wmq']['fixpack_names'] = {
         'fixpack' => { 'filename' => "8.0.0-WS-MQ-LinuxX64-FP000#{node['wmq']['fixpack']}.tar.gz" }
       }
-      force_default['wmq']['prereqs'] = %w(ksh binutils gcc glibc libgcc openssl gtk2 libstdc++ libstdc++.i686 redhat-lsb-core)
+      force_default['wmq']['prereqs'] = %w(ksh binutils compat-libstdc++-33 compat-libstdc++-33.i686 pam.i686 gcc gcc-c++ gcc glibc libgcc openssl gtk2 libstdc++.i686 libstdc++  redhat-lsb-core)
     when 'powerpc'
       force_default['wmq']['archive_names'] = {
         'base' => { 'filename' => 'WS_MQ_FOR_AIX_V8.0_EIMAGE.tar.tgz',
@@ -187,7 +187,7 @@ when '9.0'
       force_default['wmq']['fixpack_names'] = {
         'fixpack' => { 'filename' => "9.0.0-IBM-MQ-LinuxX64-FP000#{node['wmq']['fixpack']}.tar.gz" }
       }
-      force_default['wmq']['prereqs'] = %w(ksh binutils gcc glibc libgcc openssl gtk2 libstdc++ libstdc++.i686 redhat-lsb-core)
+      force_default['wmq']['prereqs'] = %w(ksh binutils compat-libstdc++-33 compat-libstdc++-33.i686 pam.i686 gcc gcc-c++ gcc glibc libgcc openssl gtk2 libstdc++.i686 libstdc++ redhat-lsb-core)
     when 'powerpc'
       force_default['wmq']['archive_names'] = {
         'base' => { 'filename' => 'WS_MQ_FOR_AIX_V9.0.0_EIMAGE.tar.tgz',

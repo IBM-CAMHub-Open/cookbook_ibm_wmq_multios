@@ -164,7 +164,14 @@ apt_update 'update' do
   only_if { node['platform_family'] == 'debian' }
 end
 
-
+execute 'enable_extra_repository' do
+  command 'yum-config-manager --enable rhui-REGION-rhel-server-extras rhui-REGION-rhel-server-optional'
+  only_if { node['wmq']['prereqs'].include?('compat-libstdc++-33') }
+  not_if 'yum list compat-libstdc++-33'
+  only_if { node['platform_family'] == 'rhel' }
+  only_if { node['platform_version'].split('.').first.to_i >= 7 }
+  not_if { File.foreach('/sys/devices/virtual/dmi/id/bios_version').grep(/amazon$/).empty? }
+end
 
 prereqs =  node['wmq']['prereqs']
 Chef::Log.info("Installing pre-requisite packages. #{prereqs}")
@@ -172,7 +179,7 @@ case node['platform_family']
 when 'rhel', 'debian'
   prereqs.each do |p|
     package p do
-      action :upgrade
+      action :install
     end
   end
 end
