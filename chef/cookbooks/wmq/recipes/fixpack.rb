@@ -2,7 +2,7 @@
 # Cookbook Name:: wmq
 # Recipe:: fixpack
 #
-# Copyright IBM Corp. 2016, 2017
+# Copyright IBM Corp. 2016, 2018
 #
 # <> Installation recipe (fixpack.rb)
 # <> This recipe performs the fixpack installation for the product

@@ -2,7 +2,7 @@
 # Cookbook Name:: wmq
 # Recipe:: start_qmgr
 #
-# Copyright IBM Corp. 2016, 2017
+# Copyright IBM Corp. 2016, 2018
 #
 # <> Start all queue managers defined for the target node.
 

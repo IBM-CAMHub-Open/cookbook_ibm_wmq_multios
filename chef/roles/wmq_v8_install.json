@@ -13,7 +13,7 @@
     "wmq": {
       "advanced": "false",
       "version": "8.0",
-      "fixpack": "5",
+      "fixpack": "8",
       "install_dir": "/opt/mqm",
       "data_dir": "/var/mqm",
       "qmgr_dir": "/var/mqm/qmgrs",

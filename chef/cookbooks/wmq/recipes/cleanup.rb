@@ -2,7 +2,7 @@
 # Cookbook Name:: wmq
 # Recipe:: cleanup
 #
-# Copyright IBM Corp. 2016, 2017
+# Copyright IBM Corp. 2016, 2018
 #
 # <> Cleanup recipe (cleanup.rb)
 # <> Perform post-install cleanup

@@ -86,7 +86,7 @@ when '9.0'
     case node['kernel']['machine']
     when 'x86_64'
       force_default['wmq]['archive_names'] = {
-        'base' => { 'filename' => 'IBM_MQ_9.0.0.0_LINUX_X86-64.tar.gz', 
+        'base' => { 'filename' => 'IBM_MQ_9.0.0.0_LINUX_X86-64.tar.gz',
                     'sha256' =>  'd16efd8113bede1439c1be4865befe7f3193648b70f08646a0fa0ad1a42a996a'}
       }
     when 'powerpc'
@@ -185,7 +185,7 @@ Attributes
   <tr>
     <td><code>node['wmq']['fixpack']</code></td>
     <td>The fixpack of IBM MQ to install.</td>
-    <td><code>1</code></td>
+    <td><code>2</code></td>
   </tr>
   <tr>
     <td><code>node['wmq']['global_mq_service']</code></td>
@@ -463,7 +463,7 @@ License and Author
 
 Author:: IBM Corp (<>)
 
-Copyright:: 2017, IBM Corp
+Copyright:: 2018, IBM Corp
 
-License:: Copyright IBM Corp. 2012, 2017
+License:: Copyright IBM Corp. 2012, 2018
 

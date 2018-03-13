@@ -2,7 +2,7 @@
 # Cookbook Name:: wmq
 # Recipe:: service
 #
-# Copyright IBM Corp. 2016, 2017
+# Copyright IBM Corp. 2016, 2018
 #
 # <> Create the MQ service and enables it on RHEL 7
 

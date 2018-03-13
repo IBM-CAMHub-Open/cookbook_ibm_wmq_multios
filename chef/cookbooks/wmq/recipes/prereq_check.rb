@@ -2,7 +2,7 @@
 # Cookbook Name:: wmq
 # Recipe:: prereq_check
 #
-# Copyright IBM Corp. 2016, 2017
+# Copyright IBM Corp. 2016, 2018
 #
 # <> Prerequisite Check Recipe (preq_check.rb)
 # <> This recipe wil check the target platform to ensure installation is possible

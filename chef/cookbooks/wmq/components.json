@@ -57,7 +57,7 @@
             "wmq": {
                 "advanced": "false",
                 "data_dir": "/var/mqm",
-                "fixpack": "5",
+                "fixpack": "8",
                 "global_mq_service": "true",
                 "install_dir": "/opt/mqm",
                 "log_dir": "/var/mqm/log",
@@ -118,7 +118,7 @@
             "wmq": {
                 "advanced": "false",
                 "data_dir": "/var/mqm",
-                "fixpack": "1",
+                "fixpack": "2",
                 "global_mq_service": "true",
                 "install_dir": "/opt/mqm",
                 "log_dir": "/var/mqm/log",

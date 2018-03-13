@@ -2,7 +2,7 @@
 # Cookbook Name:: wmq
 # Recipe:: stop_qmgr
 #
-# Copyright IBM Corp. 2016, 2017
+# Copyright IBM Corp. 2016, 2018
 #
 # <> Stop all queue managers defined for the target node.
 

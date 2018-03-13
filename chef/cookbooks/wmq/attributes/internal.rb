@@ -3,7 +3,7 @@
 ## Cookbook Name:: wmq
 ## Recipe:: internal
 ##
-## Copyright IBM Corp. 2016, 2017
+## Copyright IBM Corp. 2016, 2018
 ################################################################################################
 
 ############################################################################################################
@@ -236,7 +236,7 @@ case node['wmq']['version']
 when '8.0'
   force_default['wmq']['fixpack_series'] = "U800#{node['wmq']['fixpack']}-8.0.0-#{node['wmq']['fixpack']}"
 when '9.0'
-  force_default['wmq']['fixpack_series'] = "U900#{node['wmq']['fixpack']}-9.0.0-#{node['wmq']['fixpack']}"
+  force_default['wmq']['fixpack_series'] = "U9001-9.0.0-#{node['wmq']['fixpack']}"
 end
 
 case node['platform_family']
