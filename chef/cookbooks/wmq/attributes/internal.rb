@@ -100,8 +100,7 @@ default['wmq']['OS_supported'] = {
   'rhel'    => "true",
   'centos'  => "false",
   'debian'  => "true",
-  'sles'   =>  "false"
-}
+  'sles'   =>  "false" }
 
 #-------------------------------------------------------------------------------
 # Installation Files
@@ -119,29 +118,23 @@ when '8.0'
     when 'x86_64'
       force_default['wmq']['archive_names'] = {
         'base' => { 'filename' => 'WS_MQ_LINUX_ON_X86_64_V8.0_IMG.tar.gz',
-                    'sha256' =>  '6d1db6949a2a97606eb62cc7f43977bbdf61bdd229f1a1085ad05b6fb800f176' }
-      }
+                    'sha256' =>  '6d1db6949a2a97606eb62cc7f43977bbdf61bdd229f1a1085ad05b6fb800f176' } }
       force_default['wmq']['fixpack_names'] = {
-        'fixpack' => { 'filename' => "8.0.0-WS-MQ-LinuxX64-FP000#{node['wmq']['fixpack']}.tar.gz" }
-      }
-      force_default['wmq']['prereqs'] = %w(ksh binutils compat-libstdc++-33 compat-libstdc++-33.i686 pam.i686 gcc gcc-c++ gcc glibc libgcc openssl gtk2 libstdc++.i686 libstdc++  redhat-lsb-core)
+        'fixpack' => { 'filename' => "8.0.0-WS-MQ-LinuxX64-FP000#{node['wmq']['fixpack']}.tar.gz" } }
+      force_default['wmq']['prereqs'] = %w(ksh binutils compat-libstdc++-33 compat-libstdc++-33.i686 pam.i686 gcc gcc-c++ gcc glibc libgcc openssl gtk2 libstdc++.i686 libstdc++ redhat-lsb-core)
     when 'powerpc'
       force_default['wmq']['archive_names'] = {
         'base' => { 'filename' => 'WS_MQ_FOR_AIX_V8.0_EIMAGE.tar.tgz',
-                    'sha256' =>  '6d1db6949a2a97606eb62cc7f43977bbdf61bdd229f1a1085ad05b6fb800f176' }
-      }
+                    'sha256' =>  '6d1db6949a2a97606eb62cc7f43977bbdf61bdd229f1a1085ad05b6fb800f176' } }
       force_default['wmq']['fixpack_names'] = {
-        'fixpack' => { 'filename' => "8.0.0-WS-MQ-LinuxPPC64-FP000#{node['wmq']['fixpack']}.tar.gz" }
-      }
+        'fixpack' => { 'filename' => "8.0.0-WS-MQ-LinuxPPC64-FP000#{node['wmq']['fixpack']}.tar.gz" } }
       force_default['wmq']['prereqs'] = ['ksh', 'binutils', 'gcc', 'glibc', 'libgcc', 'openssl', 'gtk2', 'libstdc++.ppc libstdc++.ppc64']
     when 's390x'
       force_default['wmq']['archive_names'] = {
         'base' => { 'filename' => 'WS_MQ_LINUX_SYS_Z_64B_V8.0_IMG.tar.gz',
-                    'sha256' =>  '6d1db6949a2a97606eb62cc7f43977bbdf61bdd229f1a1085ad05b6fb800f176' }
-      }
+                    'sha256' =>  '6d1db6949a2a97606eb62cc7f43977bbdf61bdd229f1a1085ad05b6fb800f176' } }
       force_default['wmq']['fixpack_names'] = {
-        'fixpack' => { 'filename' => "8.0.0-WS-MQ-LinuxS390X-FP000#{node['wmq']['fixpack']}.tar.gz" }
-      }
+        'fixpack' => { 'filename' => "8.0.0-WS-MQ-LinuxS390X-FP000#{node['wmq']['fixpack']}.tar.gz" } }
       force_default['wmq']['prereqs'] = ['ksh', 'binutils', 'gcc', 'glibc', 'libgcc', 'openssl', 'gtk2', 'libstdc++.s390x', 'libstdc++.s390']
     end
   when 'debian'
@@ -149,29 +142,23 @@ when '8.0'
     when 'x86_64'
       force_default['wmq']['archive_names'] = {
         'base' => { 'filename' => 'WS_MQ_LINUX_ON_X86_64_V8.0_IMG.tar.gz',
-                    'sha256' =>  '6d1db6949a2a97606eb62cc7f43977bbdf61bdd229f1a1085ad05b6fb800f176' }
-      }
+                    'sha256' =>  '6d1db6949a2a97606eb62cc7f43977bbdf61bdd229f1a1085ad05b6fb800f176' } }
       force_default['wmq']['fixpack_names'] = {
-        'fixpack' => { 'filename' => "8.0.0-WS-MQ-LinuxX64-FP000#{node['wmq']['fixpack']}.tar.gz" }
-      }
+        'fixpack' => { 'filename' => "8.0.0-WS-MQ-LinuxX64-FP000#{node['wmq']['fixpack']}.tar.gz" } }
       force_default['wmq']['prereqs'] = ['ksh', 'binutils', 'gcc', 'gcc-multilib', 'openssl', 'libgtk2.0-0', 'rpm', 'lsb-core']
     when 'powerpc'
       force_default['wmq']['archive_names'] = {
         'base' => { 'filename' => 'WS_MQ_FOR_AIX_V8.0_EIMAGE.tar.tgz',
-                    'sha256' =>  '6d1db6949a2a97606eb62cc7f43977bbdf61bdd229f1a1085ad05b6fb800f176' }
-      }
+                    'sha256' =>  '6d1db6949a2a97606eb62cc7f43977bbdf61bdd229f1a1085ad05b6fb800f176' } }
       force_default['wmq']['fixpack_names'] = {
-        'fixpack' => { 'filename' => "8.0.0-WS-MQ-LinuxPPC64-FP000#{node['wmq']['fixpack']}.tar.gz" }
-      }
+        'fixpack' => { 'filename' => "8.0.0-WS-MQ-LinuxPPC64-FP000#{node['wmq']['fixpack']}.tar.gz" } }
       force_default['wmq']['prereqs'] = ['ksh', 'binutils', 'gcc', 'gcc-multilib', 'openssl', 'libgtk2.0-0', 'rpm']
     when 's390x'
       force_default['wmq']['archive_names'] = {
         'base' => { 'filename' => 'WS_MQ_LINUX_SYS_Z_64B_V8.0_IMG.tar.gz',
-                    'sha256' =>  '6d1db6949a2a97606eb62cc7f43977bbdf61bdd229f1a1085ad05b6fb800f176' }
-      }
+                    'sha256' =>  '6d1db6949a2a97606eb62cc7f43977bbdf61bdd229f1a1085ad05b6fb800f176' } }
       force_default['wmq']['fixpack_names'] = {
-        'fixpack' => { 'filename' => "8.0.0-WS-MQ-LinuxS390X-FP000#{node['wmq']['fixpack']}.tar.gz" }
-      }
+        'fixpack' => { 'filename' => "8.0.0-WS-MQ-LinuxS390X-FP000#{node['wmq']['fixpack']}.tar.gz" } }
       force_default['wmq']['prereqs'] = ['ksh', 'binutils', 'gcc', 'gcc-multilib', 'openssl', 'libgtk2.0-0', 'rpm']
     end
   end
@@ -182,23 +169,19 @@ when '9.0'
     when 'x86_64'
       force_default['wmq']['archive_names'] = {
         'base' => { 'filename' => 'IBM_MQ_9.0.0.0_LINUX_X86-64.tar.gz', # ~ip_checker
-                    'sha256' =>  'd16efd8113bede1439c1be4865befe7f3193648b70f08646a0fa0ad1a42a996a' }
-      }
+                    'sha256' =>  'd16efd8113bede1439c1be4865befe7f3193648b70f08646a0fa0ad1a42a996a' } }
       force_default['wmq']['fixpack_names'] = {
-        'fixpack' => { 'filename' => "9.0.0-IBM-MQ-LinuxX64-FP000#{node['wmq']['fixpack']}.tar.gz" }
-      }
+        'fixpack' => { 'filename' => "9.0.0-IBM-MQ-LinuxX64-FP000#{node['wmq']['fixpack']}.tar.gz" } }
       force_default['wmq']['prereqs'] = %w(ksh binutils compat-libstdc++-33 compat-libstdc++-33.i686 pam.i686 gcc gcc-c++ gcc glibc libgcc openssl gtk2 libstdc++.i686 libstdc++ redhat-lsb-core)
     when 'powerpc'
       force_default['wmq']['archive_names'] = {
         'base' => { 'filename' => 'WS_MQ_FOR_AIX_V9.0.0_EIMAGE.tar.tgz',
-                    'sha256' =>  'd16efd8113bede1439c1be4865befe7f3193648b70f08646a0fa0ad1a42a996a' }
-      }
+                    'sha256' =>  'd16efd8113bede1439c1be4865befe7f3193648b70f08646a0fa0ad1a42a996a' } }
       force_default['wmq']['prereqs'] = ['ksh', 'binutils', 'gcc', 'glibc', 'libgcc', 'openssl', 'gtk2', 'libstdc++.ppc64', 'libstdc++.ppc', 'redhat-lsb-core']
     when 's390x'
       force_default['wmq']['archive_names'] = {
         'base' => { 'filename' => 'WS_MQ_LINUX_SYS_Z_64B_V9.0.0_IMG.tar.gz',
-                    'sha256' =>  'd16efd8113bede1439c1be4865befe7f3193648b70f08646a0fa0ad1a42a996a' }
-      }
+                    'sha256' =>  'd16efd8113bede1439c1be4865befe7f3193648b70f08646a0fa0ad1a42a996a' } }
       force_default['wmq']['prereqs'] = ['ksh', 'binutils', 'gcc', 'glibc', 'libgcc', 'openssl', 'gtk2', 'libstdc++.s390x', 'libstdc++.s390', 'redhat-lsb-core']
     end
   when 'debian'
@@ -206,23 +189,19 @@ when '9.0'
     when 'x86_64'
       force_default['wmq']['archive_names'] = {
         'base' => { 'filename' => 'IBM_MQ_9.0.0.0_LINUX_X86-64.tar.gz', # ~ip_checker
-                    'sha256' =>  'd16efd8113bede1439c1be4865befe7f3193648b70f08646a0fa0ad1a42a996a' }
-      }
+                    'sha256' =>  'd16efd8113bede1439c1be4865befe7f3193648b70f08646a0fa0ad1a42a996a' } }
       force_default['wmq']['fixpack_names'] = {
-        'fixpack' => { 'filename' => "9.0.0-IBM-MQ-LinuxX64-FP000#{node['wmq']['fixpack']}.tar.gz" }
-      }
+        'fixpack' => { 'filename' => "9.0.0-IBM-MQ-LinuxX64-FP000#{node['wmq']['fixpack']}.tar.gz" } }
       force_default['wmq']['prereqs'] = ['ksh', 'binutils', 'gcc', 'gcc-multilib', 'openssl', 'libgtk2.0-0', 'rpm', 'lsb-core']
     when 'powerpc'
       force_default['wmq']['archive_names'] = {
         'base' => { 'filename' => 'WS_MQ_FOR_AIX_V9.0.0_EIMAGE.tar.tgz',
-                    'sha256' =>  'd16efd8113bede1439c1be4865befe7f3193648b70f08646a0fa0ad1a42a996a' }
-      }
+                    'sha256' =>  'd16efd8113bede1439c1be4865befe7f3193648b70f08646a0fa0ad1a42a996a' } }
       force_default['wmq']['prereqs'] = ['ksh', 'binutils', 'gcc', 'gcc-multilib', 'openssl', 'libgtk2.0-0', 'rpm', 'lsb-core']
     when 's390x'
       force_default['wmq']['archive_names'] = {
         'base' => { 'filename' => 'WS_MQ_LINUX_SYS_Z_64B_V9.0.0_IMG.tar.gz',
-                    'sha256' =>  'd16efd8113bede1439c1be4865befe7f3193648b70f08646a0fa0ad1a42a996a' }
-      }
+                    'sha256' =>  'd16efd8113bede1439c1be4865befe7f3193648b70f08646a0fa0ad1a42a996a' } }
       force_default['wmq']['prereqs'] = ['ksh', 'binutils', 'gcc', 'gcc-multilib', 'openssl', 'libgtk2.0-0', 'rpm', 'lsb-core']
     end
   end

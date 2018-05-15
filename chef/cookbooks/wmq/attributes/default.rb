@@ -206,9 +206,7 @@ default['wmq']['os_users'] = {
     'ldap_user' => 'false',
     'home' => "/home/mqm",
     'comment' => 'IBM MQ User',
-    'shell' => '/bin/bash'
-  }
-}
+    'shell' => '/bin/bash' } }
 
 
 #-------------------------------------------------------------------------------
@@ -565,9 +563,7 @@ default['wmq']['qmgr'] = {
     'primarylogs'    => '10',
     'secondarylogs'  => '20',
     'logsize'        => '16384',
-    'dlq'            => 'SYSTEM.DEAD.LETTER.QUEUE'
-  }
-}
+    'dlq'            => 'SYSTEM.DEAD.LETTER.QUEUE' } }
 
 # <> WebSphere MQ Service name
 # <md>attribute 'wmq/service_name',

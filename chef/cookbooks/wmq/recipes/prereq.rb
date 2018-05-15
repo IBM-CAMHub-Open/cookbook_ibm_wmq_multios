@@ -37,26 +37,21 @@ swap_file_name = node['wmq']['swap_file']
 Chef::Log.info("Creating users and groups")
 case node['platform_family']
 when 'rhel', 'debian'
-  node['wmq']['os_users'].each_pair do |_k, u|
-    next if u['ldap_user'] == 'true' || u['name'].nil?
-    group u['gid'] do
+  node['wmq']['os_users'].each_pair do |_k, user|
+    next if user['ldap_user'] == 'true' || user['name'].nil?
+    group user['gid'] do
       action :create
-      not_if { u['gid'].nil? }
+      not_if "getent group #{user['gid']}"
     end
-    next if u['name'] == 'root'
-    user u['name'] do
-      supports 'manage_home' => true
-      comment u['comment']
-      gid u['gid']
-      home u['home']
-      shell u['shell']
+
+    user user['name'] do
       action :create
-    end
-    directory u['home'] do
-      recursive true
-      action :create
-      owner u['name']
-      group u['gid']
+      comment user['comment']
+      home user['home']
+      gid user['gid']
+      shell user['shell']
+      manage_home true
+      not_if "getent passwd #{user['name']}"
     end
   end
 end
@@ -179,7 +174,7 @@ case node['platform_family']
 when 'rhel', 'debian'
   prereqs.each do |p|
     package p do
-      action :install
+      action :upgrade
     end
   end
 end
