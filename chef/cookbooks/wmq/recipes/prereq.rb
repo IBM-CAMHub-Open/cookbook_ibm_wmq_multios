@@ -168,6 +168,13 @@ execute 'enable_extra_repository' do
   not_if { File.foreach('/sys/devices/virtual/dmi/id/bios_version').grep(/amazon$/).empty? }
 end
 
+Chef::Log.info("Remove pam.i686 is exists")
+execute 'remove pam.i686' do
+  command 'yum erase -y pam.i686'
+  only_if { node['platform_family'] == 'rhel' }
+  only_if { node['platform_version'].split('.').first.to_i >= 7 }
+end
+
 prereqs =  node['wmq']['prereqs']
 Chef::Log.info("Installing pre-requisite packages. #{prereqs}")
 case node['platform_family']
