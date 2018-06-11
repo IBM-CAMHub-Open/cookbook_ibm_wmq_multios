@@ -2,9 +2,11 @@ name             'wmq'
 maintainer       'IBM Corp'
 maintainer_email ''
 license 'Copyright IBM Corp. 2012, 2018'
-issues_url 'https://github.com/IBM-CAMHub-Open/cookbook_ibm_wmq_multios/issues'
-source_url 'https://github.com/IBM-CAMHub-Open/cookbook_ibm_wmq_multios'
+
+issues_url   'https://github.com/IBM-CAMHub-Open/cookbook_ibm_wmq_multios/issues'
+source_url   'https://github.com/IBM-CAMHub-Open/cookbook_ibm_wmq_multios'
 chef_version '>= 12.5' if respond_to?(:chef_version)
+
 depends 'ibm_cloud_utils'
 supports 'ubuntu', '>= 14.04'
 supports 'ubuntu', '>= 16.04'
@@ -162,7 +164,9 @@ default['ibm_internal']['vault']['item']       - Vault Item to reference, will b
 ```
 EOH
 
-version '1.0.6'
+version '2.0.0'
+
+
 attribute 'wmq/advanced',
           :choice => ['true', 'false'],
           :default => 'false',

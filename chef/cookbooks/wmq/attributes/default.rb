@@ -206,7 +206,8 @@ default['wmq']['os_users'] = {
     'ldap_user' => 'false',
     'home' => "/home/mqm",
     'comment' => 'IBM MQ User',
-    'shell' => '/bin/bash' } }
+    'shell' => '/bin/bash' } } 
+
 
 
 #-------------------------------------------------------------------------------

@@ -171,7 +171,9 @@ when '9.0'
         'base' => { 'filename' => 'IBM_MQ_9.0.0.0_LINUX_X86-64.tar.gz', # ~ip_checker
                     'sha256' =>  'd16efd8113bede1439c1be4865befe7f3193648b70f08646a0fa0ad1a42a996a' } }
       force_default['wmq']['fixpack_names'] = {
+
         'fixpack' => { 'filename' => "9.0.0-IBM-MQ-LinuxX64-FP000#{node['wmq']['fixpack']}.tar.gz" } }
+
       force_default['wmq']['prereqs'] = %w(ksh binutils compat-libstdc++-33 compat-libstdc++-33.i686 pam pam.i686 gcc gcc-c++ gcc glibc libgcc openssl gtk2 libstdc++.i686 libstdc++ redhat-lsb-core)
     when 'powerpc'
       force_default['wmq']['archive_names'] = {
