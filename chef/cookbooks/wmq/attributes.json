@@ -67,6 +67,58 @@
             "selectable": "true",
             "type": "string"
         },
+        "kernel_sem": {
+            "default": "32 4096 32 128",
+            "description": "WebSphere MQ Server Shared Memory Semaphores  Value",
+            "displayname": "IBM MQ Kernel kernel_sem",
+            "hidden": "false",
+            "immutable_after_create": "true",
+            "parm_type": "node",
+            "precedence_level": "node",
+            "required": "true",
+            "secret": "false",
+            "selectable": "true",
+            "type": "string"
+        },
+        "kernel_shmall": {
+            "default": "2097152",
+            "description": "WebSphere MQ Server Shared Memory Segments Max Value",
+            "displayname": "IBM MQ Kernel kernel_shmall",
+            "hidden": "false",
+            "immutable_after_create": "true",
+            "parm_type": "node",
+            "precedence_level": "node",
+            "required": "true",
+            "secret": "false",
+            "selectable": "true",
+            "type": "string"
+        },
+        "kernel_shmmax": {
+            "default": "268435456",
+            "description": "WebSphere MQ Server Shared Memory Segments Size Value",
+            "displayname": "IBM MQ Kernel kernel_shmmax",
+            "hidden": "false",
+            "immutable_after_create": "true",
+            "parm_type": "node",
+            "precedence_level": "node",
+            "required": "true",
+            "secret": "false",
+            "selectable": "true",
+            "type": "string"
+        },
+        "kernel_shmmni": {
+            "default": "4096",
+            "description": "WebSphere MQ Server Shared Memory Segments Value",
+            "displayname": "IBM MQ Kernel kernel_shmmni",
+            "hidden": "false",
+            "immutable_after_create": "true",
+            "parm_type": "node",
+            "precedence_level": "node",
+            "required": "true",
+            "secret": "false",
+            "selectable": "true",
+            "type": "string"
+        },
         "log_dir": {
             "default": "/var/mqm/log",
             "description": "The directory to install IBM MQ Log Directory, recommended -> node[wmq][data_dir]/log",

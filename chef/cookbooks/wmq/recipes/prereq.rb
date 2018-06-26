@@ -126,6 +126,27 @@ when 'rhel', 'debian'
     key "vm.swappiness"
     value node['wmq']['vm_swappiness']
   end
+
+  ibm_cloud_utils_ibm_cloud_sysctl "apply" do
+    key "kernel.shmmni"
+    value node['wmq']['kernel_shmmni']
+  end
+
+  ibm_cloud_utils_ibm_cloud_sysctl "apply" do
+    key "kernel.shmall"
+    value node['wmq']['kernel_shmall']
+  end
+
+  ibm_cloud_utils_ibm_cloud_sysctl "apply" do
+    key "kernel.shmmax"
+    value node['wmq']['kernel_shmmax']
+  end
+
+  ibm_cloud_utils_ibm_cloud_sysctl "apply" do
+    key "kernel.sem"
+    value node['wmq']['kernel_sem']
+  end   
+
 end
 
 # Configure Shell Limits and System Configuration Parameters

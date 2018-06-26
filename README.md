@@ -199,6 +199,26 @@ Attributes
     <td><code>/opt/mqm</code></td>
   </tr>
   <tr>
+    <td><code>node['wmq']['kernel_sem']</code></td>
+    <td>WebSphere MQ Server Shared Memory Semaphores  Value</td>
+    <td><code>32 4096 32 128</code></td>
+  </tr>
+  <tr>
+    <td><code>node['wmq']['kernel_shmall']</code></td>
+    <td>WebSphere MQ Server Shared Memory Segments Max Value</td>
+    <td><code>2097152</code></td>
+  </tr>
+  <tr>
+    <td><code>node['wmq']['kernel_shmmax']</code></td>
+    <td>WebSphere MQ Server Shared Memory Segments Size Value</td>
+    <td><code>268435456</code></td>
+  </tr>
+  <tr>
+    <td><code>node['wmq']['kernel_shmmni']</code></td>
+    <td>WebSphere MQ Server Shared Memory Segments Value</td>
+    <td><code>4096</code></td>
+  </tr>
+  <tr>
     <td><code>node['wmq']['log_dir']</code></td>
     <td>The directory to install IBM MQ Log Directory, recommended -> node[wmq][data_dir]/log</td>
     <td><code>/var/mqm/log</code></td>

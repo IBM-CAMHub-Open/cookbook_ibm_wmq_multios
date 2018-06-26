@@ -452,6 +452,62 @@ default['wmq']['vm_swappiness'] = '0'
 # <md>          :parm_type => 'node'
 default['wmq']['nofile_value'] = '10240'
 
+# <> WebSphere MQ Server Kernel Shared Memory Segments
+# <md>attribute 'wmq/kernel_shmmni',
+# <md>          :displayname => 'IBM MQ Kernel kernel_shmmni',
+# <md>          :description => 'WebSphere MQ Server Shared Memory Segments Value',
+# <md>          :type => 'string',
+# <md>          :required => 'recommended',
+# <md>          :default => '4096',
+# <md>          :selectable => 'true',
+# <md>          :immutable_after_create => 'true',
+# <md>          :precedence_level => 'node',
+# <md>          :secret => 'false',
+# <md>          :parm_type => 'node'
+default['wmq']['kernel_shmmni'] = '4096'
+
+# <> WebSphere MQ Server Kernel Shared Memory Segments Max
+# <md>attribute 'wmq/kernel_shmall',
+# <md>          :displayname => 'IBM MQ Kernel kernel_shmall',
+# <md>          :description => 'WebSphere MQ Server Shared Memory Segments Max Value',
+# <md>          :type => 'string',
+# <md>          :required => 'recommended',
+# <md>          :default => '2097152',
+# <md>          :selectable => 'true',
+# <md>          :immutable_after_create => 'true',
+# <md>          :precedence_level => 'node',
+# <md>          :secret => 'false',
+# <md>          :parm_type => 'node'
+default['wmq']['kernel_shmall'] = '2097152'
+
+# <> WebSphere MQ Server Kernel Shared Memory Segments Size
+# <md>attribute 'wmq/kernel_shmmax',
+# <md>          :displayname => 'IBM MQ Kernel kernel_shmmax',
+# <md>          :description => 'WebSphere MQ Server Shared Memory Segments Size Value',
+# <md>          :type => 'string',
+# <md>          :required => 'recommended',
+# <md>          :default => '268435456',
+# <md>          :selectable => 'true',
+# <md>          :immutable_after_create => 'true',
+# <md>          :precedence_level => 'node',
+# <md>          :secret => 'false',
+# <md>          :parm_type => 'node'
+default['wmq']['kernel_shmmax'] = '268435456'
+# <> WebSphere MQ Server Kernel Shared Memory Semaphores
+# <md>attribute 'wmq/kernel_sem',
+# <md>          :displayname => 'IBM MQ Kernel kernel_sem',
+# <md>          :description => 'WebSphere MQ Server Shared Memory Semaphores  Value',
+# <md>          :type => 'string',
+# <md>          :required => 'recommended',
+# <md>          :default => '32 4096 32 128',
+# <md>          :selectable => 'true',
+# <md>          :immutable_after_create => 'true',
+# <md>          :precedence_level => 'node',
+# <md>          :secret => 'false',
+# <md>          :parm_type => 'node'
+default['wmq']['kernel_sem'] = '32 4096 32 128'
+
+
 #-------------------------------------------------------------------------------
 # Queue Manager Definition
 #-------------------------------------------------------------------------------

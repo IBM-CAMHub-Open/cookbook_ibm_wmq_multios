@@ -164,7 +164,7 @@ default['ibm_internal']['vault']['item']       - Vault Item to reference, will b
 ```
 EOH
 
-version '2.0.0'
+version '2.0.1'
 
 
 attribute 'wmq/advanced',
@@ -214,6 +214,50 @@ attribute 'wmq/install_dir',
           :immutable_after_create => 'true',
           :parm_type => 'component',
           :precedence_level => 'role',
+          :required => 'recommended',
+          :secret => 'false',
+          :selectable => 'true',
+          :type => 'string'
+attribute 'wmq/kernel_sem',
+          :default => '32 4096 32 128',
+          :description => 'WebSphere MQ Server Shared Memory Semaphores  Value',
+          :displayname => 'IBM MQ Kernel kernel_sem',
+          :immutable_after_create => 'true',
+          :parm_type => 'node',
+          :precedence_level => 'node',
+          :required => 'recommended',
+          :secret => 'false',
+          :selectable => 'true',
+          :type => 'string'
+attribute 'wmq/kernel_shmall',
+          :default => '2097152',
+          :description => 'WebSphere MQ Server Shared Memory Segments Max Value',
+          :displayname => 'IBM MQ Kernel kernel_shmall',
+          :immutable_after_create => 'true',
+          :parm_type => 'node',
+          :precedence_level => 'node',
+          :required => 'recommended',
+          :secret => 'false',
+          :selectable => 'true',
+          :type => 'string'
+attribute 'wmq/kernel_shmmax',
+          :default => '268435456',
+          :description => 'WebSphere MQ Server Shared Memory Segments Size Value',
+          :displayname => 'IBM MQ Kernel kernel_shmmax',
+          :immutable_after_create => 'true',
+          :parm_type => 'node',
+          :precedence_level => 'node',
+          :required => 'recommended',
+          :secret => 'false',
+          :selectable => 'true',
+          :type => 'string'
+attribute 'wmq/kernel_shmmni',
+          :default => '4096',
+          :description => 'WebSphere MQ Server Shared Memory Segments Value',
+          :displayname => 'IBM MQ Kernel kernel_shmmni',
+          :immutable_after_create => 'true',
+          :parm_type => 'node',
+          :precedence_level => 'node',
           :required => 'recommended',
           :secret => 'false',
           :selectable => 'true',
