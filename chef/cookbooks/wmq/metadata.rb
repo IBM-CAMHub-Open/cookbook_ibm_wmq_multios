@@ -1,7 +1,7 @@
 name             'wmq'
 maintainer       'IBM Corp'
 maintainer_email ''
-license 'Copyright IBM Corp. 2012, 2018'
+license 'Copyright IBM Corp. 2012, 2020'
 
 issues_url   'https://github.com/IBM-CAMHub-Open/cookbook_ibm_wmq_multios/issues'
 source_url   'https://github.com/IBM-CAMHub-Open/cookbook_ibm_wmq_multios'
@@ -98,18 +98,18 @@ when '9.0'
     case node['kernel']['machine']
     when 'x86_64'
       force_default['wmq]['archive_names'] = {
-        'base' => { 'filename' => 'IBM_MQ_9.0.0.0_LINUX_X86-64.tar.gz',
-                    'sha256' =>  'd16efd8113bede1439c1be4865befe7f3193648b70f08646a0fa0ad1a42a996a'}
+        'base' => { 'filename' => 'IBM_MQ_9.0.5.0_LINUX_X86-64.tar.gz',
+                    'sha256' =>  '2fbaebec64fefbf863c9d33ab50c4197cd2d3eb9cd041e1cbef7558cba61db6c'}
       }
     when 'powerpc'
       force_default['wmq]['archive_names'] = {
-        'base' => { 'filename' => 'WS_MQ_FOR_AIX_V9.0.0_EIMAGE.tar.tgz',
-                    'sha256' =>  'd16efd8113bede1439c1be4865befe7f3193648b70f08646a0fa0ad1a42a996a'}
+        'base' => { 'filename' => 'IBM_MQ_9.0.5.0_AIX.tar.gz',
+                    'sha256' =>  'f6f45473bfdf05235e1acc6af7f37f819b279aee2613058e4a1f8dcd0f8ed3c1'}
       }
     when 's390x'
       force_default['wmq]['archive_names'] = {
-        'base' => { 'filename' => 'WS_MQ_LINUX_SYS_Z_64B_V9.0.0_IMG.tar.gz',
-                    'sha256' =>  'd16efd8113bede1439c1be4865befe7f3193648b70f08646a0fa0ad1a42a996a'}
+        'base' => { 'filename' => 'IBM_MQ_9.0.5.0_LINUX_SYSTEM_Z.tar.gz',
+                    'sha256' =>  'c5103d2a633b357d4fa8c5834b3c4788e3c6b1eb61a6f335a13db96a371fdb2a'}
       }
     end
   end
@@ -137,15 +137,6 @@ when '8.0'
       }
     end
   end
-when '9.0'
-  case node['os']
-  when 'linux'
-    case node['kernel']['machine']
-    when 'x86_64'
-      force_default['wmq']['fixpack_names'] = {
-        'fixpack' => { 'filename' => '9.0.0-WS-MQ-LinuxX64-FP000{node['wmq']['fixpack']}.tar.gz' }
-      }
-  end
 end
 
 ```
@@ -164,7 +155,7 @@ default['ibm_internal']['vault']['item']       - Vault Item to reference, will b
 ```
 EOH
 
-version '2.0.1'
+version '2.0.2'
 
 
 attribute 'wmq/advanced',
@@ -192,7 +183,7 @@ attribute 'wmq/data_dir',
           :selectable => 'true',
           :type => 'string'
 attribute 'wmq/fixpack',
-          :default => '2',
+          :default => '0',
           :description => 'The fixpack of IBM MQ to install.',
           :displayname => 'IBM MQ Fixpack',
           :immutable_after_create => 'true',
@@ -645,6 +636,16 @@ attribute 'wmq/vm_swappiness',
           :default => '0',
           :description => 'WebSphere MQ Server Kernel Configuration vm_swappiness',
           :displayname => 'IBM MQ Kernel vm_swappiness',
+          :immutable_after_create => 'true',
+          :parm_type => 'node',
+          :precedence_level => 'node',
+          :required => 'recommended',
+          :secret => 'false',
+          :selectable => 'true',
+          :type => 'string'
+attribute 'wmq/webhost',
+          :description => 'The host name for MQ web console, use IP address of the node. Valid only for MQ 9.0.',
+          :displayname => 'IBM MQ Webconsole hostname',
           :immutable_after_create => 'true',
           :parm_type => 'node',
           :precedence_level => 'node',

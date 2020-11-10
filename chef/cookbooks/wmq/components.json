@@ -156,7 +156,8 @@
                 "service_name": "mq",
                 "swap_file": "/swapfile",
                 "swap_file_size": "512",
-                "version": "9.0"
+                "version": "9.0",
+                "webhost": ""
             }
         },
         "depends_on": [],

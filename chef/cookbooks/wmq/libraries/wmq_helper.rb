@@ -1,7 +1,7 @@
 # Cookbook Name:: wmq
 # Library:: wmq_helper
 #
-# Copyright IBM Corp. 2016, 2018
+# Copyright IBM Corp. 2016, 2020
 #
 # <> library: WMQ Helper
 # <> Library Functions for the WMQ cookbook

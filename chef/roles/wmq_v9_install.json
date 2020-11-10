@@ -12,6 +12,7 @@
     },
     "wmq": {
       "advanced": "false",
+      "webhost": "",
       "version": "9.0",
       "fixpack": "2",
       "install_dir": "/opt/mqm",

@@ -2,7 +2,7 @@
 # Cookbook Name:: wmq
 # Recipe:: config_qmgr_single
 #
-# Copyright IBM Corp. 2016, 2018
+# Copyright IBM Corp. 2016, 2020
 #
 # <> Create one or more queue managers if they do not already exist.
 

@@ -2,7 +2,7 @@
 # Cookbook Name:: wmq
 # Recipe:: install
 #
-# Copyright IBM Corp. 2016, 2018
+# Copyright IBM Corp. 2016, 2020
 #
 # <> Installation recipe (install.rb)
 # <> This recipe performs the product installation.

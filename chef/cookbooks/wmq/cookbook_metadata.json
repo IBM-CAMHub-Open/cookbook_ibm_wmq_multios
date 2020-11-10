@@ -11,8 +11,7 @@
                 "8.0.0.5",
                 "8.0.0.6",
                 "8.0.0.8",
-                "9.0.0.1",
-                "9.0.0.2"
+                "9.0.5.0"
             ],
             "platforms": [
                 "RHEL 6.x (Not for MQ9)",
@@ -52,11 +51,11 @@
             "9.0": {
                 "Redhat X86_64": {
                     "repo_root": "/wmq/v9.0/base",
-                    "file": ["IBM_MQ_9.0.0.0_LINUX_X86-64.tar.gz"]
+                    "file": ["IBM_MQ_9.0.5.0_LINUX_X86-64.tar.gz"]
                 },
                 "Debian X86_64": {
                     "repo_root": "/wmq/v9.0/base",
-                    "file": ["IBM_MQ_9.0.0.0_LINUX_X86-64.tar.gz"]
+                    "file": ["IBM_MQ_9.0.5.0_LINUX_X86-64.tar.gz"]
                 }
             }
         },
@@ -69,16 +68,6 @@
                "Debiant X86_64": {
                     "repo_root": "/wmq/v80/maint",
                     "file": ["8.0.0-WS-MQ-LinuxX64-FP000#{node['wmq']['fixpack']}.tar.gz"]
-                }
-            },
-            "9.0.X": {
-                "Redhat X86_64": {
-                    "repo_root": "/wmq/v90/maint",
-                    "file": ["9.0.0-IBM-MQ-LinuxX64-FP000#X.tar.gz"]
-                },
-                "Debian X86_64": {
-                    "repo_root": "/wmq/v90/maint",
-                    "file": ["9.0.0-IBM-MQ-LinuxX64-FP000#X.tar.gz"]
                 }
             }
         },

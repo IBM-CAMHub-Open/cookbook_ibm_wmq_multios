@@ -35,7 +35,7 @@
             "type": "string"
         },
         "fixpack": {
-            "default": "2",
+            "default": "0",
             "description": "The fixpack of IBM MQ to install.",
             "displayname": "IBM MQ Fixpack",
             "hidden": "false",
@@ -590,6 +590,18 @@
             "default": "0",
             "description": "WebSphere MQ Server Kernel Configuration vm_swappiness",
             "displayname": "IBM MQ Kernel vm_swappiness",
+            "hidden": "false",
+            "immutable_after_create": "true",
+            "parm_type": "node",
+            "precedence_level": "node",
+            "required": "true",
+            "secret": "false",
+            "selectable": "true",
+            "type": "string"
+        },
+        "webhost": {
+            "description": "The host name for MQ web console, use IP address of the node. Valid only for MQ 9.0.",
+            "displayname": "IBM MQ Webconsole hostname",
             "hidden": "false",
             "immutable_after_create": "true",
             "parm_type": "node",

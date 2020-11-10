@@ -3,7 +3,7 @@
 ## Cookbook Name:: wmq
 ## Recipe:: internal
 ##
-## Copyright IBM Corp. 2016, 2018
+## Copyright IBM Corp. 2016, 2020
 ################################################################################################
 
 ############################################################################################################
@@ -168,42 +168,44 @@ when '9.0'
     case node['kernel']['machine']
     when 'x86_64'
       force_default['wmq']['archive_names'] = {
-        'base' => { 'filename' => 'IBM_MQ_9.0.0.0_LINUX_X86-64.tar.gz', # ~ip_checker
-                    'sha256' =>  'd16efd8113bede1439c1be4865befe7f3193648b70f08646a0fa0ad1a42a996a' } }
-      force_default['wmq']['fixpack_names'] = {
-
-        'fixpack' => { 'filename' => "9.0.0-IBM-MQ-LinuxX64-FP000#{node['wmq']['fixpack']}.tar.gz" } }
+        'base' => { 'filename' => 'IBM_MQ_9.0.5.0_LINUX_X86-64.tar.gz', # ~ip_checker
+                    'sha256' =>  '2fbaebec64fefbf863c9d33ab50c4197cd2d3eb9cd041e1cbef7558cba61db6c' } }
+      #Upgrade to 9.0.5 has no fixpack
+      #force_default['wmq']['fixpack_names'] = {
+      #
+      #  'fixpack' => { 'filename' => "9.0.0-IBM-MQ-LinuxX64-FP000#{node['wmq']['fixpack']}.tar.gz" } }
 
       force_default['wmq']['prereqs'] = %w(ksh binutils compat-libstdc++-33 compat-libstdc++-33.i686 pam pam.i686 gcc gcc-c++ gcc glibc libgcc openssl gtk2 libstdc++.i686 libstdc++ redhat-lsb-core)
     when 'powerpc'
       force_default['wmq']['archive_names'] = {
-        'base' => { 'filename' => 'WS_MQ_FOR_AIX_V9.0.0_EIMAGE.tar.tgz',
-                    'sha256' =>  'd16efd8113bede1439c1be4865befe7f3193648b70f08646a0fa0ad1a42a996a' } }
+        'base' => { 'filename' => 'IBM_MQ_9.0.5.0_AIX.tar.gz',
+                    'sha256' =>  'f6f45473bfdf05235e1acc6af7f37f819b279aee2613058e4a1f8dcd0f8ed3c1' } }
       force_default['wmq']['prereqs'] = ['ksh', 'binutils', 'gcc', 'glibc', 'libgcc', 'openssl', 'gtk2', 'libstdc++.ppc64', 'libstdc++.ppc', 'redhat-lsb-core']
     when 's390x'
       force_default['wmq']['archive_names'] = {
-        'base' => { 'filename' => 'WS_MQ_LINUX_SYS_Z_64B_V9.0.0_IMG.tar.gz',
-                    'sha256' =>  'd16efd8113bede1439c1be4865befe7f3193648b70f08646a0fa0ad1a42a996a' } }
+        'base' => { 'filename' => 'IBM_MQ_9.0.5.0_LINUX_SYSTEM_Z.tar.gz',
+                    'sha256' =>  'c5103d2a633b357d4fa8c5834b3c4788e3c6b1eb61a6f335a13db96a371fdb2a' } }
       force_default['wmq']['prereqs'] = ['ksh', 'binutils', 'gcc', 'glibc', 'libgcc', 'openssl', 'gtk2', 'libstdc++.s390x', 'libstdc++.s390', 'redhat-lsb-core']
     end
   when 'debian'
     case node['kernel']['machine']
     when 'x86_64'
       force_default['wmq']['archive_names'] = {
-        'base' => { 'filename' => 'IBM_MQ_9.0.0.0_LINUX_X86-64.tar.gz', # ~ip_checker
-                    'sha256' =>  'd16efd8113bede1439c1be4865befe7f3193648b70f08646a0fa0ad1a42a996a' } }
-      force_default['wmq']['fixpack_names'] = {
-        'fixpack' => { 'filename' => "9.0.0-IBM-MQ-LinuxX64-FP000#{node['wmq']['fixpack']}.tar.gz" } }
+        'base' => { 'filename' => 'IBM_MQ_9.0.5.0_LINUX_X86-64.tar.gz', # ~ip_checker
+                    'sha256' =>  '2fbaebec64fefbf863c9d33ab50c4197cd2d3eb9cd041e1cbef7558cba61db6c' } }
+      #Upgrade to 9.0.5 has no fixpack
+      #force_default['wmq']['fixpack_names'] = {
+      #  'fixpack' => { 'filename' => "9.0.0-IBM-MQ-LinuxX64-FP000#{node['wmq']['fixpack']}.tar.gz" } }
       force_default['wmq']['prereqs'] = ['ksh', 'binutils', 'gcc', 'gcc-multilib', 'openssl', 'libgtk2.0-0', 'rpm', 'lsb-core']
     when 'powerpc'
       force_default['wmq']['archive_names'] = {
-        'base' => { 'filename' => 'WS_MQ_FOR_AIX_V9.0.0_EIMAGE.tar.tgz',
-                    'sha256' =>  'd16efd8113bede1439c1be4865befe7f3193648b70f08646a0fa0ad1a42a996a' } }
+        'base' => { 'filename' => 'IBM_MQ_9.0.5.0_AIX.tar.gz',
+                    'sha256' =>  'f6f45473bfdf05235e1acc6af7f37f819b279aee2613058e4a1f8dcd0f8ed3c1' } }
       force_default['wmq']['prereqs'] = ['ksh', 'binutils', 'gcc', 'gcc-multilib', 'openssl', 'libgtk2.0-0', 'rpm', 'lsb-core']
     when 's390x'
       force_default['wmq']['archive_names'] = {
-        'base' => { 'filename' => 'WS_MQ_LINUX_SYS_Z_64B_V9.0.0_IMG.tar.gz',
-                    'sha256' =>  'd16efd8113bede1439c1be4865befe7f3193648b70f08646a0fa0ad1a42a996a' } }
+        'base' => { 'filename' => 'IBM_MQ_9.0.5.0_LINUX_SYSTEM_Z.tar.gz',
+                    'sha256' =>  'c5103d2a633b357d4fa8c5834b3c4788e3c6b1eb61a6f335a13db96a371fdb2a' } }
       force_default['wmq']['prereqs'] = ['ksh', 'binutils', 'gcc', 'gcc-multilib', 'openssl', 'libgtk2.0-0', 'rpm', 'lsb-core']
     end
   end
@@ -216,53 +218,72 @@ end
 case node['wmq']['version']
 when '8.0'
   force_default['wmq']['fixpack_series'] = "U800#{node['wmq']['fixpack']}-8.0.0-#{node['wmq']['fixpack']}"
-when '9.0'
-  force_default['wmq']['fixpack_series'] = "U9001-9.0.0-#{node['wmq']['fixpack']}"
 end
 
 case node['platform_family']
 when 'rhel', 'debian'
   case node['kernel']['machine']
   when 'x86_64'
-    # <> WebSphere MQ Server version packages inside archive
-    force_default['wmq']['packages'] = "MQSeriesRuntime-#{node['wmq']['version']}.0-0.x86_64.rpm MQSeriesServer-#{node['wmq']['version']}.0-0.x86_64.rpm MQSeriesSDK-#{node['wmq']['version']}.0-0.x86_64.rpm MQSeriesSamples-#{node['wmq']['version']}.0-0.x86_64.rpm MQSeriesJava-#{node['wmq']['version']}.0-0.x86_64.rpm MQSeriesMan-#{node['wmq']['version']}.0-0.x86_64.rpm MQSeriesJRE-#{node['wmq']['version']}.0-0.x86_64.rpm  MQSeriesClient-#{node['wmq']['version']}.0-0.x86_64.rpm"
-
-    # <> WebSphere MQ Server version gsk inside archive
-    force_default['wmq']['gskpackages'] = "MQSeriesGSKit-#{node['wmq']['version']}.0-0.x86_64.rpm"
+    case node['wmq']['version']
+    when '8.0'
+        force_default['wmq']['packages'] = "MQSeriesRuntime-#{node['wmq']['version']}.0-0.x86_64.rpm MQSeriesServer-#{node['wmq']['version']}.0-0.x86_64.rpm MQSeriesSDK-#{node['wmq']['version']}.0-0.x86_64.rpm MQSeriesSamples-#{node['wmq']['version']}.0-0.x86_64.rpm MQSeriesJava-#{node['wmq']['version']}.0-0.x86_64.rpm MQSeriesMan-#{node['wmq']['version']}.0-0.x86_64.rpm MQSeriesJRE-#{node['wmq']['version']}.0-0.x86_64.rpm  MQSeriesClient-#{node['wmq']['version']}.0-0.x86_64.rpm"
+    
+        # <> WebSphere MQ Server version gsk inside archive
+        force_default['wmq']['gskpackages'] = "MQSeriesGSKit-#{node['wmq']['version']}.0-0.x86_64.rpm"
+    
+        # <> WebSphere MQ Server fixpack_version packages inside archive
+        force_default['wmq']['fixpackpackages'] = "MQSeriesRuntime-#{node['wmq']['fixpack_series']}.x86_64.rpm MQSeriesServer-#{node['wmq']['fixpack_series']}.x86_64.rpm MQSeriesSDK-#{node['wmq']['fixpack_series']}.x86_64.rpm MQSeriesSamples-#{node['wmq']['fixpack_series']}.x86_64.rpm MQSeriesJava-#{node['wmq']['fixpack_series']}.x86_64.rpm MQSeriesMan-#{node['wmq']['fixpack_series']}.x86_64.rpm MQSeriesJRE-#{node['wmq']['fixpack_series']}.x86_64.rpm MQSeriesClient-#{node['wmq']['fixpack_series']}.x86_64.rpm"
+    
+        # <> WebSphere MQ Server fixpack_version gsk inside archive
+        force_default['wmq']['fixpackgsk'] = "MQSeriesGSKit-#{node['wmq']['fixpack_series']}.x86_64.rpm"
+    
+        # <> WebSphere MQ Server fixpack_version packages uninstall inside archive
+        force_default['wmq']['uninstallfixpack'] = "MQSeriesGSKit-#{node['wmq']['fixpack_series']} MQSeriesRuntime-#{node['wmq']['fixpack_series']} MQSeriesServer-#{node['wmq']['fixpack_series']} MQSeriesJRE-#{node['wmq']['fixpack_series']} MQSeriesJava-#{node['wmq']['fixpack_series']} MQSeriesClient-#{node['wmq']['fixpack_series']} MQSeriesSDK-#{node['wmq']['fixpack_series']} MQSeriesSamples-#{node['wmq']['fixpack_series']} MQSeriesMan-#{node['wmq']['fixpack_series']}"
+      
+        # <> WebSphere MQ Advanced Packages
+        force_default['wmq']['advancedpackages'] = "MQSeriesFTBase-#{node['wmq']['version']}.0-0.x86_64.rpm MQSeriesFTAgent-#{node['wmq']['version']}.0-0.x86_64.rpm MQSeriesFTService-#{node['wmq']['version']}.0-0.x86_64.rpm MQSeriesFTLogger-#{node['wmq']['version']}.0-0.x86_64.rpm MQSeriesFTTools-#{node['wmq']['version']}.0-0.x86_64.rpm MQSeriesAMS-#{node['wmq']['version']}.0-0.x86_64.rpm MQSeriesAMS-#{node['wmq']['version']}.0-0.x86_64.rpm MQSeriesXRService-#{node['wmq']['version']}.0-0.x86_64.rpm"
+    
+        # <> WebSphere MQ Advanced Fixpack
+        force_default['wmq']['advancedfixpack'] = "MQSeriesFTBase-#{node['wmq']['fixpack_series']}.x86_64.rpm MQSeriesFTAgent-#{node['wmq']['fixpack_series']}.x86_64.rpm MQSeriesFTService-#{node['wmq']['fixpack_series']}.x86_64.rpm MQSeriesFTLogger-#{node['wmq']['fixpack_series']}.x86_64.rpm MQSeriesFTTools-#{node['wmq']['fixpack_series']}.x86_64.rpm MQSeriesAMS-#{node['wmq']['fixpack_series']}.x86_64.rpm MQSeriesAMS-#{node['wmq']['fixpack_series']}.x86_64.rpm MQSeriesXRService-#{node['wmq']['fixpack_series']}.x86_64.rpm"
+      
+    when '9.0'
+        force_default['wmq']['packages'] = "MQSeriesRuntime-#{node['wmq']['version']}.5-0.x86_64.rpm MQSeriesServer-#{node['wmq']['version']}.5-0.x86_64.rpm MQSeriesSDK-#{node['wmq']['version']}.5-0.x86_64.rpm MQSeriesSamples-#{node['wmq']['version']}.5-0.x86_64.rpm MQSeriesJava-#{node['wmq']['version']}.5-0.x86_64.rpm MQSeriesMan-#{node['wmq']['version']}.5-0.x86_64.rpm MQSeriesJRE-#{node['wmq']['version']}.5-0.x86_64.rpm  MQSeriesClient-#{node['wmq']['version']}.5-0.x86_64.rpm MQSeriesWeb-#{node['wmq']['version']}.5-0.x86_64.rpm"
+    
+        # <> WebSphere MQ Server version gsk inside archive
+        force_default['wmq']['gskpackages'] = "MQSeriesGSKit-#{node['wmq']['version']}.5-0.x86_64.rpm"	
+      
+        # <> WebSphere MQ Advanced Packages
+        force_default['wmq']['advancedpackages'] = "MQSeriesFTBase-#{node['wmq']['version']}.5-0.x86_64.rpm MQSeriesFTAgent-#{node['wmq']['version']}.5-0.x86_64.rpm MQSeriesFTService-#{node['wmq']['version']}.5-0.x86_64.rpm MQSeriesFTLogger-#{node['wmq']['version']}.5-0.x86_64.rpm MQSeriesFTTools-#{node['wmq']['version']}.5-0.x86_64.rpm MQSeriesAMS-#{node['wmq']['version']}.5-0.x86_64.rpm MQSeriesAMS-#{node['wmq']['version']}.5-0.x86_64.rpm MQSeriesXRService-#{node['wmq']['version']}.5-0.x86_64.rpm"	
+    end    
 
     # <> WebSphere MQ Server version uninstall packages inside archive
     force_default['wmq']['uninstall'] = 'MQSeriesGSKit MQSeriesRuntime MQSeriesServer MQSeriesJRE MQSeriesJava MQSeriesClient MQSeriesSDK MQSeriesSamples MQSeriesMan'
-
-    # <> WebSphere MQ Server fixpack_version packages inside archive
-    force_default['wmq']['fixpackpackages'] = "MQSeriesRuntime-#{node['wmq']['fixpack_series']}.x86_64.rpm MQSeriesServer-#{node['wmq']['fixpack_series']}.x86_64.rpm MQSeriesSDK-#{node['wmq']['fixpack_series']}.x86_64.rpm MQSeriesSamples-#{node['wmq']['fixpack_series']}.x86_64.rpm MQSeriesJava-#{node['wmq']['fixpack_series']}.x86_64.rpm MQSeriesMan-#{node['wmq']['fixpack_series']}.x86_64.rpm MQSeriesJRE-#{node['wmq']['fixpack_series']}.x86_64.rpm MQSeriesClient-#{node['wmq']['fixpack_series']}.x86_64.rpm"
-
-    # <> WebSphere MQ Server fixpack_version gsk inside archive
-    force_default['wmq']['fixpackgsk'] = "MQSeriesGSKit-#{node['wmq']['fixpack_series']}.x86_64.rpm"
-
-    # <> WebSphere MQ Server fixpack_version packages uninstall inside archive
-    force_default['wmq']['uninstallfixpack'] = "MQSeriesGSKit-#{node['wmq']['fixpack_series']} MQSeriesRuntime-#{node['wmq']['fixpack_series']} MQSeriesServer-#{node['wmq']['fixpack_series']} MQSeriesJRE-#{node['wmq']['fixpack_series']} MQSeriesJava-#{node['wmq']['fixpack_series']} MQSeriesClient-#{node['wmq']['fixpack_series']} MQSeriesSDK-#{node['wmq']['fixpack_series']} MQSeriesSamples-#{node['wmq']['fixpack_series']} MQSeriesMan-#{node['wmq']['fixpack_series']}"
-
-    # <> WebSphere MQ Advanced Packages
-    force_default['wmq']['advancedpackages'] = "MQSeriesFTBase-#{node['wmq']['version']}.0-0.x86_64.rpm MQSeriesFTAgent-#{node['wmq']['version']}.0-0.x86_64.rpm MQSeriesFTService-#{node['wmq']['version']}.0-0.x86_64.rpm MQSeriesFTLogger-#{node['wmq']['version']}.0-0.x86_64.rpm MQSeriesFTTools-#{node['wmq']['version']}.0-0.x86_64.rpm MQSeriesAMS-#{node['wmq']['version']}.0-0.x86_64.rpm MQSeriesAMS-#{node['wmq']['version']}.0-0.x86_64.rpm MQSeriesXRService-#{node['wmq']['version']}.0-0.x86_64.rpm"
-
-    # <> WebSphere MQ Advanced Fixpack
-    force_default['wmq']['advancedfixpack'] = "MQSeriesFTBase-#{node['wmq']['fixpack_series']}.x86_64.rpm MQSeriesFTAgent-#{node['wmq']['fixpack_series']}.x86_64.rpm MQSeriesFTService-#{node['wmq']['fixpack_series']}.x86_64.rpm MQSeriesFTLogger-#{node['wmq']['fixpack_series']}.x86_64.rpm MQSeriesFTTools-#{node['wmq']['fixpack_series']}.x86_64.rpm MQSeriesAMS-#{node['wmq']['fixpack_series']}.x86_64.rpm MQSeriesAMS-#{node['wmq']['fixpack_series']}.x86_64.rpm MQSeriesXRService-#{node['wmq']['fixpack_series']}.x86_64.rpm"
 
   when 's390x'
-    # <> WebSphere MQ Server version packages inside archive
-    force_default['wmq']['packages'] = "MQSeriesRuntime-#{node['wmq']['version']}.s390x.rpm MQSeriesServer-#{node['wmq']['version']}.s390x.rpm MQSeriesJRE-#{node['wmq']['version']}.s390x.rpm MQSeriesJava-#{node['wmq']['version']}.s390x.rpm MQSeriesClient-#{node['wmq']['version']}.s390x.rpm MQSeriesSDK-#{node['wmq']['version']}.s390x.rpm MQSeriesSamples-#{node['wmq']['version']}.s390x.rpm MQSeriesMan-#{node['wmq']['version']}.s390x.rpm"
-
-    # <> WebSphere MQ Server version gsk inside archive
-    force_default['wmq']['gskpackages'] = "MQSeriesGSKit-#{node['wmq']['version']}.s390x.rpm"
+    case node['wmq']['version']
+    when '8.0'
+        # <> WebSphere MQ Server version packages inside archive
+        force_default['wmq']['packages'] = "MQSeriesRuntime-#{node['wmq']['version']}.s390x.rpm MQSeriesServer-#{node['wmq']['version']}.s390x.rpm MQSeriesJRE-#{node['wmq']['version']}.s390x.rpm MQSeriesJava-#{node['wmq']['version']}.s390x.rpm MQSeriesClient-#{node['wmq']['version']}.s390x.rpm MQSeriesSDK-#{node['wmq']['version']}.s390x.rpm MQSeriesSamples-#{node['wmq']['version']}.s390x.rpm MQSeriesMan-#{node['wmq']['version']}.s390x.rpm"
+    
+        # <> WebSphere MQ Server version gsk inside archive
+        force_default['wmq']['gskpackages'] = "MQSeriesGSKit-#{node['wmq']['version']}.s390x.rpm"
+    
+        # <> WebSphere MQ Server fixpack_version packages inside archive
+        force_default['wmq']['fixpackpackages'] = "MQSeriesGSKit-#{node['wmq']['fixpack_series']}.s390x.rpm MQSeriesJRE-#{node['wmq']['fixpack_series']}.s390x.rpm MQSeriesServer-#{node['wmq']['fixpack_series']}.s390x.rpm MQSeriesJava-#{node['wmq']['fixpack_series']}.s390x.rpm MQSeriesClient-#{node['wmq']['fixpack_series']}.s390x.rpm MQSeriesSDK-#{node['wmq']['fixpack_series']}.s390x.rpm MQSeriesRuntime-#{node['wmq']['fixpack_series']}.s390x.rpm MQSeriesSamples-#{node['wmq']['fixpack_series']}.s390x.rpm MQSeriesMan-#{node['wmq']['fixpack_series']}.s390x.rpm"
+    
+        # <> WebSphere MQ Server fixpack_version packages uninstall inside archive
+        force_default['wmq']['fixpack']['uninstall'] = "MQSeriesGSKit-#{node['wmq']['fixpack_series']} MQSeriesRuntime-#{node['wmq']['fixpack_series']} MQSeriesServer-#{node['wmq']['fixpack_series']} MQSeriesJRE-#{node['wmq']['fixpack_series']} MQSeriesJava-#{node['wmq']['fixpack_series']} MQSeriesClient-#{node['wmq']['fixpack_series']} MQSeriesSDK-#{node['wmq']['fixpack_series']} MQSeriesSamples-#{node['wmq']['fixpack_series']} MQSeriesMan-#{node['wmq']['fixpack_series']}"
+    when '9.0'
+        # <> WebSphere MQ Server version packages inside archive
+        force_default['wmq']['packages'] = "MQSeriesRuntime-#{node['wmq']['version']}.5-0.s390x.rpm MQSeriesServer-#{node['wmq']['version']}.5-0.s390x.rpm MQSeriesJRE-#{node['wmq']['version']}.5-0.s390x.rpm MQSeriesJava-#{node['wmq']['version']}.5-0.s390x.rpm MQSeriesClient-#{node['wmq']['version']}.5-0.s390x.rpm MQSeriesSDK-#{node['wmq']['version']}.5-0.s390x.rpm MQSeriesSamples-#{node['wmq']['version']}.5-0.s390x.rpm MQSeriesMan-#{node['wmq']['version']}.5-0.s390x.rpm MQSeriesWeb-#{node['wmq']['version']}.5-0.s390x.rpm"
+    
+        # <> WebSphere MQ Server version gsk inside archive
+        force_default['wmq']['gskpackages'] = "MQSeriesGSKit-#{node['wmq']['version']}.5-0.s390x.rpm"
+    end    
 
     # <> WebSphere MQ Server version uninstall packages inside archive
     force_default['wmq']['uninstall'] = 'MQSeriesGSKit MQSeriesRuntime MQSeriesServer MQSeriesJRE MQSeriesJava MQSeriesClient MQSeriesSDK MQSeriesSamples MQSeriesMan'
 
-    # <> WebSphere MQ Server fixpack_version packages inside archive
-    force_default['wmq']['fixpackpackages'] = "MQSeriesGSKit-#{node['wmq']['fixpack_series']}.s390x.rpm MQSeriesJRE-#{node['wmq']['fixpack_series']}.s390x.rpm MQSeriesServer-#{node['wmq']['fixpack_series']}.s390x.rpm MQSeriesJava-#{node['wmq']['fixpack_series']}.s390x.rpm MQSeriesClient-#{node['wmq']['fixpack_series']}.s390x.rpm MQSeriesSDK-#{node['wmq']['fixpack_series']}.s390x.rpm MQSeriesRuntime-#{node['wmq']['fixpack_series']}.s390x.rpm MQSeriesSamples-#{node['wmq']['fixpack_series']}.s390x.rpm MQSeriesMan-#{node['wmq']['fixpack_series']}.s390x.rpm"
-
-    # <> WebSphere MQ Server fixpack_version packages uninstall inside archive
-    force_default['wmq']['fixpack']['uninstall'] = "MQSeriesGSKit-#{node['wmq']['fixpack_series']} MQSeriesRuntime-#{node['wmq']['fixpack_series']} MQSeriesServer-#{node['wmq']['fixpack_series']} MQSeriesJRE-#{node['wmq']['fixpack_series']} MQSeriesJava-#{node['wmq']['fixpack_series']} MQSeriesClient-#{node['wmq']['fixpack_series']} MQSeriesSDK-#{node['wmq']['fixpack_series']} MQSeriesSamples-#{node['wmq']['fixpack_series']} MQSeriesMan-#{node['wmq']['fixpack_series']}"
   end
 when 'aix'
   # <> WebSphere MQ Server version packages inside archive
@@ -271,11 +292,13 @@ when 'aix'
   force_default['wmq']['gskpackages'] = 'all'
   # <> WebSphere MQ Server version uninstall packages inside archive
   force_default['wmq']['uninstall'] = 'mqseries'
-
-  # <> WebSphere MQ Server fixpack_version packages inside archive
-  force_default['wmq']['fixpackpackages'] = 'all'
-  # <> WebSphere MQ Server fixpack_version gsk inside archive
-  force_default['fixpackgsk'] = 'all'
-  # <> WebSphere MQ Server fixpack_version packages uninstall inside archive
-  force_default['wmq']['fixpack']['uninstall'] = 'mqseries'
+  case node['wmq']['version']
+  when '8.0'
+    # <> WebSphere MQ Server fixpack_version packages inside archive
+    force_default['wmq']['fixpackpackages'] = 'all'
+    # <> WebSphere MQ Server fixpack_version gsk inside archive
+    force_default['fixpackgsk'] = 'all'
+    # <> WebSphere MQ Server fixpack_version packages uninstall inside archive
+    force_default['wmq']['fixpack']['uninstall'] = 'mqseries'
+  end
 end

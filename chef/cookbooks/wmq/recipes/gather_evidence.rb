@@ -2,7 +2,7 @@
 # Cookbook Name:: wmq
 # Recipe:: gather_evidence
 #
-# Copyright IBM Corp. 2016, 2018
+# Copyright IBM Corp. 2016, 2020
 #
 # <> Evidence gathering recipe (gather_evidence.rb)
 # <> This recipe will collect functional product information and store it in an archive.

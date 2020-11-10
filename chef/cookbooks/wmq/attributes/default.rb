@@ -3,7 +3,7 @@
 # Cookbook Name:: wmq
 # Recipe:: default
 #
-# Copyright IBM Corp. 2016, 2018
+# Copyright IBM Corp. 2016, 2020
 #################################################################################################
 
 
@@ -52,7 +52,7 @@ default['wmq']['advanced'] = "false"
 # <md>          :description => 'The fixpack of IBM MQ to install.',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
-# <md>          :default => '2',
+# <md>          :default => '0',
 # <md>          :selectable => 'true',
 # <md>          :immutable_after_create => 'true',
 # <md>          :precedence_level => 'node',
@@ -649,3 +649,16 @@ default['wmq']['service_name'] = 'mq'
 # <md>          :secret => 'false',
 # <md>          :parm_type => 'node'
 default['wmq']['global_mq_service'] = 'true'
+
+# <> IBM MQ Webconsole hostname
+# <md>attribute 'wmq/webhost',
+# <md>          :displayname => 'IBM MQ Webconsole hostname',
+# <md>          :description => 'The host name for MQ web console, use IP address of the node. Valid only for MQ 9.0.',
+# <md>          :type => 'string',
+# <md>          :required => 'recommended',
+# <md>          :selectable => 'true',
+# <md>          :immutable_after_create => 'true',
+# <md>          :precedence_level => 'node',
+# <md>          :secret => 'false',
+# <md>          :parm_type => 'node'
+default['wmq']['webhost'] = ''

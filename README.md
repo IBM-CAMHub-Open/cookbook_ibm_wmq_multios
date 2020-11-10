@@ -86,18 +86,18 @@ when '9.0'
     case node['kernel']['machine']
     when 'x86_64'
       force_default['wmq]['archive_names'] = {
-        'base' => { 'filename' => 'IBM_MQ_9.0.0.0_LINUX_X86-64.tar.gz',
-                    'sha256' =>  'd16efd8113bede1439c1be4865befe7f3193648b70f08646a0fa0ad1a42a996a'}
+        'base' => { 'filename' => 'IBM_MQ_9.0.5.0_LINUX_X86-64.tar.gz',
+                    'sha256' =>  '2fbaebec64fefbf863c9d33ab50c4197cd2d3eb9cd041e1cbef7558cba61db6c'}
       }
     when 'powerpc'
       force_default['wmq]['archive_names'] = {
-        'base' => { 'filename' => 'WS_MQ_FOR_AIX_V9.0.0_EIMAGE.tar.tgz',
-                    'sha256' =>  'd16efd8113bede1439c1be4865befe7f3193648b70f08646a0fa0ad1a42a996a'}
+        'base' => { 'filename' => 'IBM_MQ_9.0.5.0_AIX.tar.gz',
+                    'sha256' =>  'f6f45473bfdf05235e1acc6af7f37f819b279aee2613058e4a1f8dcd0f8ed3c1'}
       }
     when 's390x'
       force_default['wmq]['archive_names'] = {
-        'base' => { 'filename' => 'WS_MQ_LINUX_SYS_Z_64B_V9.0.0_IMG.tar.gz',
-                    'sha256' =>  'd16efd8113bede1439c1be4865befe7f3193648b70f08646a0fa0ad1a42a996a'}
+        'base' => { 'filename' => 'IBM_MQ_9.0.5.0_LINUX_SYSTEM_Z.tar.gz',
+                    'sha256' =>  'c5103d2a633b357d4fa8c5834b3c4788e3c6b1eb61a6f335a13db96a371fdb2a'}
       }
     end
   end
@@ -124,15 +124,6 @@ when '8.0'
         'fixpack' => { 'filename' => '8.0.0-WS-MQ-LinuxS390X-FP000{node['wmq']['fixpack']}.tar.gz' }
       }
     end
-  end
-when '9.0'
-  case node['os']
-  when 'linux'
-    case node['kernel']['machine']
-    when 'x86_64'
-      force_default['wmq']['fixpack_names'] = {
-        'fixpack' => { 'filename' => '9.0.0-WS-MQ-LinuxX64-FP000{node['wmq']['fixpack']}.tar.gz' }
-      }
   end
 end
 
@@ -186,7 +177,7 @@ Attributes
   <tr>
     <td><code>node['wmq']['fixpack']</code></td>
     <td>The fixpack of IBM MQ to install.</td>
-    <td><code>2</code></td>
+    <td><code>0</code></td>
   </tr>
   <tr>
     <td><code>node['wmq']['global_mq_service']</code></td>
@@ -393,6 +384,11 @@ Attributes
     <td>WebSphere MQ Server Kernel Configuration vm_swappiness</td>
     <td><code>0</code></td>
   </tr>
+  <tr>
+    <td><code>node['wmq']['webhost']</code></td>
+    <td>The host name for MQ web console, use IP address of the node. Valid only for MQ 9.0.</td>
+    <td><code></code></td>
+  </tr>    
 </table>
 
 Recipes
@@ -484,7 +480,7 @@ License and Author
 
 Author:: IBM Corp (<>)
 
-Copyright:: 2018, IBM Corp
+Copyright:: 2020, IBM Corp
 
-License:: Copyright IBM Corp. 2012, 2018
+License:: Copyright IBM Corp. 2012, 2020
 

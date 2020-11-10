@@ -1,7 +1,7 @@
 # Cookbook Name:: wmq
 # Library:: wmq_qmgrs
 #
-# Copyright IBM Corp. 2016, 2018
+# Copyright IBM Corp. 2016, 2020
 #
 # <> library: WMQ QMGR
 # <> Queue Manager Management fo the WMQ cookbook

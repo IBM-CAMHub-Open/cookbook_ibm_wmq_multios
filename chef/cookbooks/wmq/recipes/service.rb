@@ -2,7 +2,7 @@
 # Cookbook Name:: wmq
 # Recipe:: service
 #
-# Copyright IBM Corp. 2016, 2018
+# Copyright IBM Corp. 2016, 2020
 #
 # <> Create the MQ service and enables it on RHEL 7
 
@@ -90,4 +90,3 @@ end
 service node['wmq']['service_name'] do
   action [:start]
 end
-

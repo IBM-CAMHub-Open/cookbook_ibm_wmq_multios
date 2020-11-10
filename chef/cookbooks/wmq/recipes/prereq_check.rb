@@ -2,7 +2,7 @@
 # Cookbook Name:: wmq
 # Recipe:: prereq_check
 #
-# Copyright IBM Corp. 2016, 2018
+# Copyright IBM Corp. 2016, 2020
 #
 # <> Prerequisite Check Recipe (preq_check.rb)
 # <> This recipe wil check the target platform to ensure installation is possible
@@ -81,20 +81,21 @@ upgrade_fixpack = if wmq_installed?
                      true
                   end
 
-node['wmq']['fixpack_names'].each_pair do |_p, v|
-  next if node['wmq']['fixpack'] == "0"
-  fp_filename = v['filename']
-  Chef::Log.info("Checking if file #{fp_filename} exists")
+unless node['wmq']['fixpack_names'].nil?                
+  node['wmq']['fixpack_names'].each_pair do |_p, v|
+    next if node['wmq']['fixpack'] == "0"
+    fp_filename = v['filename']
+    Chef::Log.info("Checking if file #{fp_filename} exists")
 
-  ibm_cloud_utils_sw_repo "Checking if file #{fp_filename} exists" do
-    repository node['ibm']['sw_repo']
-    sw_repo_self_signed_cert node['ibm']['sw_repo_self_signed_cert']
-    sw_repo_user node['ibm']['sw_repo_user']
-    secure_repo 'true'
-    sw_repo_path node['wmq']['sw_repo_path'] + '/maint/'
-    package fp_filename
-    action :check_package
-    only_if { upgrade_fixpack }
+    ibm_cloud_utils_sw_repo "Checking if file #{fp_filename} exists" do
+      repository node['ibm']['sw_repo']
+      sw_repo_self_signed_cert node['ibm']['sw_repo_self_signed_cert']
+      sw_repo_user node['ibm']['sw_repo_user']
+      secure_repo 'true'
+      sw_repo_path node['wmq']['sw_repo_path'] + '/maint/'
+      package fp_filename
+      action :check_package
+      only_if { upgrade_fixpack }
+    end
   end
-
 end
